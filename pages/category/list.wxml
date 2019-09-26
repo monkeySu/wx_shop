@@ -64,4 +64,25 @@
     <text class="cont">亲, 没有相关内容</text>
   </view>
 
+  <!-- 侧边栏 -->
+  <view class="slide-mask" wx:if="{{showSlide}}">
+    <view class="slide-box" hover-class="none" hover-stop-propagation="false">
+      <view class="slide-title" hover-class="none" hover-stop-propagation="false">
+        分类
+      </view>
+      <view class="slide-item" hover-class="none" hover-stop-propagation="false">
+        <view class="slide-item-title" hover-class="none" hover-stop-propagation="false">
+          宝石款式
+        </view>
+        <view class="slide-item-options" hover-class="none" hover-stop-propagation="false">
+          <view class="option" hover-class="none" hover-stop-propagation="false">
+            银饰
+          </view>
+          <view class="option" hover-class="none" hover-stop-propagation="false">
+            金饰
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
 </view>

@@ -17,6 +17,27 @@
         <view class="user-header-cont-name">点击登录</view>
       </view>
     </view>
+
+    <!-- 会员 -->
+    <view class="vip-box">
+      成为会员 尊享VIP
+    </view>
+    <!-- 财富数量 -->
+    <view class="wealth-box">
+      <view class="wealth-item">
+        <view class="wealth-count">
+          889
+        </view>
+        <view class="wealth-name">我的鸢尾花</view>
+      </view>
+      <view class="wealth-item">
+        <view class="wealth-count">
+          889
+        </view>
+        <view class="wealth-name">蜜糖值</view>
+      </view>
+    </view>
+
     <!-- 订单导航栏 -->
     <view class="order-navbar">
       <form bindsubmit="onTargetOrder" data-type="all" report-submit="true">

@@ -31,6 +31,118 @@
       </scroll-view>
     </view>
 
+    <!-- 通知 -->
+    <view class="notice" hover-class="none" hover-stop-propagation="false">
+      <swiper 
+        class="notice-box"
+        indicator-dots="{{false}}"
+        autoplay="{{true}}"
+        interval="2000" 
+        duration="500" 
+        circular="false" 
+        vertical="true" 
+        display-multiple-items="1" 
+        skip-hidden-item-layout="false" 
+      >
+      <swiper-item class="notice-item">
+        庆祝Dior迪奥珠宝问世二十周年
+      </swiper-item>
+      <swiper-item class="notice-item">
+        庆祝Dior迪奥珠宝问世二十周年
+      </swiper-item>
+      </swiper>
+    </view>
+
+    <!-- 商品列表 -->
+
+    <view class="commodity-list">
+      <view class="commodity-title" hover-class="none" hover-stop-propagation="false">
+        推荐产品
+      </view>
+      <view class="commodity-item" hover-class="none" hover-stop-propagation="false">
+        <image src="http://static.runoob.com/images/demo/demo2.jpg" class="item-img"></image>
+        <view class="item-content" hover-class="none" hover-stop-propagation="false">
+          <view class="content-title">750/1000黄金镶钻项链</view>
+          <view class="content-decs">750/该系列重新演绎Mimioui系列...</view>
+          <view class="content-original-price" hover-class="none" hover-stop-propagation="false">
+            ￥13333
+          </view>
+          <view class="content-price" hover-class="none" hover-stop-propagation="false">
+            <view class="cash-price" hover-class="none" hover-stop-propagation="false">
+              ￥1222
+            </view>
+            <view class="integral-price" hover-class="none" hover-stop-propagation="false">
+              1499
+            </view>
+          </view>
+        </view>
+      </view>
+
+      <swiper 
+        class="commodity-swiper"
+        indicator-dots="{{false}}"
+        interval="2000" 
+        duration="500" 
+        circular="false"
+        display-multiple-items="3" 
+        skip-hidden-item-layout="false"
+        next-margin="24rpx"
+      >
+      <swiper-item class="commodity-swiper-item">
+        <image class="item-image" src="http://static.runoob.com/images/demo/demo2.jpg" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload="">
+        </image>
+        <view class="item-name" hover-class="none" hover-stop-propagation="false">
+          OUI 750/1000玫…
+        </view>
+        <view class="integral-price" hover-class="none" hover-stop-propagation="false">
+          1699.00
+        </view>
+        <view class="price" hover-class="none" hover-stop-propagation="false">
+          1699.00
+        </view>
+      </swiper-item>
+      <swiper-item class="commodity-swiper-item">
+        <image class="item-image" src="http://static.runoob.com/images/demo/demo2.jpg" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload="">
+        </image>
+        <view class="item-name" hover-class="none" hover-stop-propagation="false">
+          OUI 750/1000玫…
+        </view>
+        <view class="integral-price" hover-class="none" hover-stop-propagation="false">
+          1699.00
+        </view>
+        <view class="price" hover-class="none" hover-stop-propagation="false">
+          1699.00
+        </view>
+      </swiper-item>
+      <swiper-item class="commodity-swiper-item">
+        <image class="item-image" src="http://static.runoob.com/images/demo/demo2.jpg" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload="">
+        </image>
+        <view class="item-name" hover-class="none" hover-stop-propagation="false">
+          OUI 750/1000玫…
+        </view>
+        <view class="integral-price" hover-class="none" hover-stop-propagation="false">
+          1699.00
+        </view>
+        <view class="price" hover-class="none" hover-stop-propagation="false">
+          1699.00
+        </view>
+      </swiper-item>
+      <swiper-item class="commodity-swiper-item">
+        <image class="item-image" src="http://static.runoob.com/images/demo/demo2.jpg" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload="">
+        </image>
+        <view class="item-name" hover-class="none" hover-stop-propagation="false">
+          OUI 750/1000玫…
+        </view>
+        <view class="integral-price" hover-class="none" hover-stop-propagation="false">
+          1699.00
+        </view>
+        <view class="price" hover-class="none" hover-stop-propagation="false">
+          1699.00
+        </view>
+      </swiper-item>
+      </swiper>
+    </view>
+    
     <!-- 猜您喜欢 -->
     <view class="title-hrbg" style="margin-top:10rpx">
       <text class="cont">

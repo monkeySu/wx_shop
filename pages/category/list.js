@@ -20,6 +20,8 @@ Page({
     no_more: false,
 
     page: 1,
+
+    showSlide: false
   },
 
   /**
@@ -60,6 +62,13 @@ Page({
           _this.setData({ 'list.data': dataList.data.concat(resultList.data) });
         }
     });
+  },
+
+  // 展示侧边栏
+  showSlide(){
+    this.setData({
+      showSlide: true
+    })
   },
 
   /**

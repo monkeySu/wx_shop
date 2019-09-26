@@ -47,6 +47,65 @@
   padding: 20rpx 0;
 }
 
+/* 会员 */
+
+.vip-box{
+  width:702rpx;
+  height:96rpx;
+  background:linear-gradient(90deg,rgba(237,189,141,1) 0%,rgba(220,167,114,1) 100%);
+  box-shadow:0px 4rpx 24rpx 0px rgba(0,0,0,0.06);
+  border-radius:4rpx;
+  font-size:28rpx;
+  font-family:PingFangSC;
+  font-weight:500;
+  color:rgba(51,51,51,1);
+  line-height:96rpx;
+  position: absolute;
+  top: 236rpx;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/* 财富 */
+.wealth-box{
+  width:702rpx;
+  display: flex;
+  justify-content: space-between;
+  margin: 0 auto;
+  margin-top: 60rpx;
+}
+
+.wealth-item{
+  width:342rpx;
+  height:142rpx;
+  background:rgba(255,255,255,1);
+  box-shadow:0px 4rpx 24rpx 0px rgba(0,0,0,0.06);
+  border-radius:4rpx;
+  background: #fff;
+}
+
+.wealth-count{
+  height:66rpx;
+  font-size:48rpx;
+  font-family:PingFangSC;
+  font-weight:500;
+  color:rgba(51,51,51,1);
+  line-height:66rpx;
+  margin-top: 20rpx;
+  margin-left: 32rpx;
+}
+
+.wealth-name{
+  height:34rpx;
+  font-size: 24rpx;
+  font-family:PingFang-SC;
+  font-weight:500;
+  color:rgba(153,153,153,1);
+  line-height:34rpx;
+  margin-top: 4rpx;
+  margin-left: 32rpx;
+}
+
 /* 订单导航栏 */
 
 .order-navbar {

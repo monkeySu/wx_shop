@@ -39,3 +39,143 @@
   margin-top: 1px;
   z-index: -1;
 }
+
+.notice-box{
+  width: 100vw;
+  height: 88rpx;
+  background:rgba(220,167,114,.1);
+
+}
+
+.notice-item{
+  width: 100vw;
+  height: 88rpx;
+  line-height: 88rpx;
+}
+
+.commodity-list{
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: #fff;
+}
+
+.commodity-title{
+  width:100%;
+  height:50rpx;
+  font-size:36rpx;
+  font-family:PingFangSC-Medium,PingFangSC;
+  font-weight:500;
+  color:rgba(51,51,51,1);
+  line-height:50rpx;
+  text-align: left;
+  border-left: 13rpx #DCA772 solid;
+  box-sizing: border-box;
+  text-indent: 12rpx;
+  margin-top: 40rpx;
+  margin-bottom: 30rpx;
+}
+
+.commodity-item{
+  height: 256rpx;
+  display: flex;
+  margin-bottom: 34rpx;
+}
+
+.item-img{
+  width: 256rpx;
+  height: 256rpx;
+}
+
+.item-content{
+  height: 256rpx;
+  width: 406rpx;
+  margin-left: 24rpx;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  /* flex-direction: column; */
+}
+
+.content-title{
+  width:406rpx;
+  font-size:32rpx;
+  font-family:PingFangSC-Medium,PingFangSC;
+  font-weight:500;
+  color:rgba(51,51,51,1);
+  line-height:44rpx;
+}
+
+.content-decs{
+  width: 406rpx;
+  font-size:28rpx;
+  font-family:PingFang-SC-Medium,PingFang-SC;
+  font-weight:500;
+  color:rgba(153,153,153,1);
+  line-height:40rpx;
+}
+
+.content-original-price{
+  width: 100%;
+  text-decoration:line-through;
+  height:40rpx;
+  font-size:28rpx;
+  font-family:PingFang-SC-Medium,PingFang-SC;
+  font-weight:500;
+  color:rgba(153,153,153,1);
+  line-height:40rpx;
+  align-self: flex-end;
+}
+
+.content-price{
+  display: flex;
+  align-self: flex-end;
+}
+
+.commodity-swiper{
+  width: 100vw;
+ 
+}
+
+.commodity-swiper-item{
+  width: 218rpx;
+  height: auto;
+  display: flex;
+  /* flex-direction: column; */
+  flex-wrap: wrap;
+  margin-right: 16rpx;
+}
+
+.commodity-swiper-item .item-image{
+  width: 218rpx;
+  height: 218rpx;
+}
+
+.commodity-swiper-item .item-name{
+  width:218rpx;
+  height:34rpx;
+  font-size:24rpx;
+  font-family:PingFangSC-Medium,PingFangSC;
+  font-weight:500;
+  color:rgba(51,51,51,1);
+  line-height:34rpx;
+}
+
+.commodity-swiper-item .integral-price{
+  height:34rpx;
+  font-size:24rpx;
+  font-family:PingFang-SC-Medium,PingFang-SC;
+  font-weight:500;
+  color:rgba(220,167,114,1);
+  line-height:34rpx;
+}
+
+.commodity-swiper-item .price{
+  height:34rpx;
+  font-size:24rpx;
+  font-family:PingFangSC-Medium,PingFangSC;
+  font-weight:500;
+  color:rgba(215,63,63,1);
+  line-height:34rpx;   
+}
