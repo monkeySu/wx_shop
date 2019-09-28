@@ -14,7 +14,12 @@
     "pages/address/index",
     "pages/address/create",
     "pages/address/detail",
-    "pages/login/login"
+    "pages/login/login",
+    "pages/agent/index",
+    "pages/agent/apply",
+    "pages/agent/list",
+    "pages/agent/user",
+    "pages/bonus/index"
   ],
   "window": {
     "navigationBarBackgroundColor": "#ffffff",
@@ -23,8 +28,8 @@
     "backgroundTextStyle": "dark"
   },
   "tabBar": {
-    "color": "#6e6d6b",
-    "selectedColor": "#ff9966",
+    "color": "#9B7D6B",
+    "selectedColor": "#9B7D6B",
     "borderStyle": "black",
     "backgroundColor": "#ffffff",
     "list": [

@@ -21,7 +21,7 @@ App({
     user_id: null,
   },
 
-  api_root: '', // api地址
+  api_root: 'https://mall.irishoney.com/api', // api地址
 
   /**
    * 生命周期函数--监听小程序初始化
@@ -29,7 +29,7 @@ App({
   onLaunch() {
     let App = this;
     // 设置api地址
-    App.setApiRoot();
+    // App.setApiRoot();
   },
 
   /**
@@ -42,10 +42,10 @@ App({
   /**
    * 设置api地址
    */
-  setApiRoot() {
-    let App = this;
-    App.api_root = `${siteInfo.siteroot}index.php?s=/api/`;
-  },
+  // setApiRoot() {
+  //   let App = this;
+  //   App.api_root = `${siteInfo.siteroot}index.php?s=/api/`;
+  // },
 
   /**
    * 获取小程序基础信息
@@ -125,19 +125,19 @@ App({
     // 构造请求参数
     data = Object.assign({
       wxapp_id: 10001,
-      token: wx.getStorageSync('token')
+      // token: wx.getStorageSync('token')
     }, data);
 
     // if (typeof check_login === 'undefined')
     //   check_login = true;
-
     // 构造get请求
     let request = () => {
-      data.token = wx.getStorageSync('token');
+      const token = wx.getStorageSync('token');
       wx.request({
         url: App.api_root + url,
         header: {
-          'content-type': 'application/json'
+          'content-type': 'application/json',
+          'Authorization': token
         },
         data,
         success(res) {
@@ -151,10 +151,9 @@ App({
             wx.hideNavigationBarLoading();
             App.doLogin();
           } else if (res.data.code === 0) {
-            App.showError(res.data.msg);
-            return false;
-          } else {
             success && success(res.data);
+          } else {
+            App.showError(res.data.msg);
           }
         },
         fail(res) {
@@ -181,18 +180,23 @@ App({
     let App = this;
     // 构造请求参数
     data = Object.assign({
-      wxapp_id: 10001,
-      token: wx.getStorageSync('token')
+      wxapp_id: 10001
     }, data);
     wx.request({
       url: App.api_root + url,
       header: {
         'content-type': 'application/x-www-form-urlencoded',
+        'Authorization': wx.getStorageSync('token')
       },
       method: 'POST',
       data,
       success(res) {
-        if (res.statusCode !== 200 || typeof res.data !== 'object') {
+        if(res.statusCode === 403) {
+          App.doLogin(() => {
+            App._post_form(url, data, success, fail);
+          });
+          return false;
+        } else if (res.statusCode !== 200 || typeof res.data !== 'object') {
           App.showError('网络请求出错');
           return false;
         }
@@ -203,12 +207,13 @@ App({
           });
           return false;
         } else if (res.data.code === 0) {
+          success && success(res.data);
+        }else{
           App.showError(res.data.msg, () => {
             fail && fail(res);
           });
           return false;
         }
-        success && success(res.data);
       },
       fail(res) {
         // console.log(res);
@@ -312,19 +317,26 @@ App({
     wx.login({
       success(res) {
         // 发送用户信息
-        App._post_form('user/login', {
+        App._post_form('/wx/xcx/login', {
           code: res.code,
-          user_info: e.detail.rawData,
-          encrypted_data: e.detail.encryptedData,
-          iv: e.detail.iv,
-          signature: e.detail.signature
+          // user_info: e.detail.rawData,
+          
+          // signature: e.detail.signature
         }, result => {
+          console.log(result)
           // 记录token user_id
           wx.setStorageSync('token', result.data.token);
-          wx.setStorageSync('user_id', result.data.user_id);
+          wx.setStorageSync('user_id', 
+          result.data.user_id);
+          App._post_form('/wx/xcx/update', {
+            encrypted_data: e.detail.encryptedData,
+            iv: e.detail.iv,
+          }, result => {
+            callback && callback();
+          })
           // 执行回调函数
-          callback && callback();
-        }, false, () => {
+        }, false, (err) => {
+          console.log(err)
           wx.hideLoading();
         });
       }

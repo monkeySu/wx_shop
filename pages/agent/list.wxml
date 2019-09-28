@@ -1,0 +1,35 @@
+<!--pages/agent/list.wxml-->
+<view class="container" hover-class="none" hover-stop-propagation="false">
+    <view class="list" hover-class="none" hover-stop-propagation="false">
+        <image class="avatar"></image>
+        <view class="content" hover-class="none" hover-stop-propagation="false">
+            <view class="nickname" hover-class="none" hover-stop-propagation="false">
+                jsosss
+            </view>
+            <view class="content-item" hover-class="none" hover-stop-propagation="false">
+                <view class="item-title" hover-class="none" hover-stop-propagation="false">
+                    加入时间：
+                </view>
+                <view class="item-content" hover-class="none" hover-stop-propagation="false">
+                    2019-2-2
+                </view>
+            </view>
+            <view class="content-item" hover-class="none" hover-stop-propagation="false">
+                <view class="item-title" hover-class="none" hover-stop-propagation="false">
+                    收益：
+                </view>
+                <view class="item-content" hover-class="none" hover-stop-propagation="false">
+                    <span>奖励金：</span><span style="color: #D94646">5555</span>
+                </view>
+            </view>
+            <view class="content-item" hover-class="none" hover-stop-propagation="false">
+                <view class="item-title" hover-class="none" hover-stop-propagation="false">
+                    电话：
+                </view>
+                <view class="item-content" hover-class="none" hover-stop-propagation="false">
+                    2019-2-2
+                </view>
+            </view>
+        </view>
+    </view>
+</view>

@@ -1,0 +1,28 @@
+<view class="container">
+    <view class="banner" hover-class="none" hover-stop-propagation="false">
+        
+    </view>
+    <view class="card">
+        <view class="content-title" hover-class="none" hover-stop-propagation="false">
+            <view class="rect-box before"></view>
+                什么是销售代理
+            <view class="rect-box after"></view>
+        </view>
+        <view class="content" hover-class="none" hover-stop-propagation="false">
+            
+        </view>
+    </view>
+    <view class="card">
+        <view class="content-title" hover-class="none" hover-stop-propagation="false">
+            <view class="rect-box before"></view>
+            什么是销售代理
+            <view class="rect-box after"></view>
+
+        </view>
+        <view class="content" hover-class="none" hover-stop-propagation="false">
+            
+        </view>
+    </view>
+    
+    <button class="navigateToApply">点击成为销售代理</button>
+</view>

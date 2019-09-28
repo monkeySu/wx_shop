@@ -1,0 +1,35 @@
+<!--pages/agent/user.wxml-->
+<scroll-view class="container" scroll-x="false" scroll-y="true" upper-threshold="50" lower-threshold="50" 
+    scroll-top="0" scroll-left="0" scroll-into-view="" scroll-with-animation="false" enable-back-to-top="false" 
+    bindscrolltoupper="" bindscrolltolower="" bindscroll="">
+    
+    <image class="user-avatar" src="" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload="">
+    </image>
+    <view class="wealth-box" hover-class="none" hover-stop-propagation="false">
+        <view class="wealth-item" hover-class="none" hover-stop-propagation="false">
+            <view class="item-count" hover-class="none" hover-stop-propagation="false">
+                8824
+            </view>
+            <view class="item-name" hover-class="none" hover-stop-propagation="false">
+                奖励金
+            </view>
+        </view>
+        <view class="wealth-item" hover-class="none" hover-stop-propagation="false">
+            <view class="item-count" hover-class="none" hover-stop-propagation="false">
+                8824
+            </view>
+            <view class="item-name" hover-class="none" hover-stop-propagation="false">
+                奖励金
+            </view>
+        </view>
+    </view>
+    <view class="msg-box" hover-class="none" hover-stop-propagation="false">
+        <view class="msg-title" hover-class="none" hover-stop-propagation="false">
+            排行
+        </view>
+        <view class="msg-count" hover-class="none" hover-stop-propagation="false">
+            23
+        </view>
+    </view>
+
+</scroll-view>

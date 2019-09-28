@@ -1,0 +1,28 @@
+<view class="container">
+    <view class="avatar" style="background-image: url({{imageSrc}})" bindtap="showCropper"></view>
+    <view class="nickname">点击添加头像</view>
+    <form hidden="{{showCropper}}">
+        <view class="input-box">
+            <view class="label" hover-class="none" hover-stop-propagation="false">
+                合伙人ID
+            </view>
+            <input class="input" placeholder="合伙人ID" />
+        </view>
+        <view class="input-box">
+            <view class="label" hover-class="none" hover-stop-propagation="false">
+                合伙人ID
+            </view>
+            <input class="input" placeholder="合伙人ID" />
+        </view>
+        <button class="submit" html-type="submit">提交申请</button>
+    </form>
+
+    <my-cropper
+        bind:close="hideCut"
+        cutRatio="1"
+        wx:if="{{showCropper}}"
+        cropperRatio='1'
+        class="cropper"
+        imageSrc="{{imageSrc}}"
+    />
+</view>

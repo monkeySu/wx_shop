@@ -1,0 +1,74 @@
+/* pages/agent/user.wxss */
+.user-avatar{
+    width:200rpx;
+    height:200rpx;
+    margin: 0 auto;
+    margin-top: 48rpx;
+}
+
+.wealth-box{
+    margin-top: 48rpx;
+    width: 702rpx;
+    display: flex;
+    justify-content: space-between;
+    margin: 0 auto;
+}
+
+.wealth-item{
+    width: 342rpx;
+    height: 142rpx;
+    background:rgba(255,255,255,1);
+    box-shadow:0px 4rpx 24rpx 0px rgba(0,0,0,0.06);
+    border-radius:4rpx;
+    margin-bottom: 24rpx;
+}
+
+.item-count{
+    font-size:48rpx;
+    font-family:PingFangSC;
+    font-weight:500;
+    color:rgba(215,63,63,1);
+    line-height:66rpx;
+    margin: 20rpx 0 0 32rpx;
+}
+
+.item-name{
+    margin: 4rpx 0 0 32rpx;
+    height:34rpx;
+    font-size:24rpx;
+    font-family:PingFang-SC;
+    font-weight:500;
+    color:rgba(153,153,153,1);
+    line-height:34rpx;
+}
+
+.msg-box{
+    width: 100vw;
+    height: 112rpx;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #fff;
+    font-size:32rpx;
+    position: relative;
+}
+
+.msg-box:after{
+    content: "";
+    position: absolute;
+    width:718rpx;
+    height:2rpx;
+    background:rgba(234,234,234,0);
+    box-shadow:0px 0px 0px 0px rgba(234,234,234,1);
+    bottom: 0;
+    right: 0;
+}
+
+.msg-title{
+    margin-left: 34rpx;
+}
+
+.msg-count{
+    margin-right: 34rpx;
+    color: #B8B8B8;
+}
