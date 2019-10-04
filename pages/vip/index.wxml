@@ -1,0 +1,50 @@
+<!--pages/vip/index.wxml-->
+
+<scroll-view class="container" scroll-x="false" scroll-y="true" upper-threshold="50" lower-threshold="50" scroll-top="0"
+    scroll-left="0" scroll-into-view="" scroll-with-animation="false" enable-back-to-top="false" bindscrolltoupper=""
+    bindscrolltolower="" bindscroll="">
+
+    <swiper 
+        class="swiper-box" 
+        indicator-dots="{{true}}" 
+        interval="2000" 
+        duration="500" 
+        circular="{{false}}"
+        display-multiple-items="{{1}}" 
+        skip-hidden-item-layout="false" 
+        next-margin="96rpx"
+        bindchange="changeSwiper"
+        >
+        <swiper-item wx:for="{{list}}" wx:key="id" class="swiper-item">
+            <image class="item-image" src="{{item.card_bg}}" mode="widthFix" lazy-load="false" binderror="" bindload="">
+                
+            </image>
+        </swiper-item>
+    </swiper>
+
+    <view class="title" hover-class="none" hover-stop-propagation="false">
+        如何成为会员
+    </view>
+    <view class="content" hover-class="none" hover-stop-propagation="false">
+        {{list[current].content}}
+    </view>
+    <view class="more-btn" hover-class="none" hover-stop-propagation="false">
+        查看更多
+    </view>
+
+    <view class="title" hover-class="none" hover-stop-propagation="false">
+        会员权益
+    </view>
+    <view class="good-list" wx:for="{{list[current].good}}" hover-class="none" hover-stop-propagation="false">
+        <view v-if="{{item.type=='good'?true:false}}" class="good-name" hover-class="none" hover-stop-propagation="false">
+            <view class="rect" hover-class="none" hover-stop-propagation="false"></view> {{item.explain}}
+        </view>
+        <view class="good-money" hover-class="none" hover-stop-propagation="false">
+            {{item.price}}元
+        </view>
+    </view>
+    <button bindtap="payVip" class="pay-btn">￥{{list[current].price}} 立即开通</button>
+    <view class="pay-btn-placeloader" hover-class="none" hover-stop-propagation="false">
+        
+    </view>
+</scroll-view>

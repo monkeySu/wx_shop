@@ -21,7 +21,12 @@ Page({
    */
   getAddressList: function() {
     let _this = this;
-    App._get('address/lists', {}, function(result) {
+    App._get('/user/address/list', {}, function(result) {
+      result.data.list.map((value, index) => {
+        let arr = result.data.list[index].tel_number.split('')
+        arr.splice(3,4,'*','*','*','*')
+        result.data.list[index].tel_number = arr.join('')
+      })
       _this.setData(result.data);
     });
   },
@@ -31,7 +36,7 @@ Page({
    */
   createAddress: function() {
     wx.navigateTo({
-      url: './create'
+      url: './create?id=0'
     });
   },
 
@@ -39,8 +44,9 @@ Page({
    * 编辑地址
    */
   editAddress: function(e) {
+
     wx.navigateTo({
-      url: "./detail?address_id=" + e.currentTarget.dataset.id
+      url: "./create?id=" + e.currentTarget.dataset.id
     });
   },
 

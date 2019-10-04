@@ -19,7 +19,7 @@
 
     <my-cropper
         bind:close="hideCut"
-        cutRatio="1"
+        cutRatio="0"
         wx:if="{{showCropper}}"
         cropperRatio='1'
         class="cropper"

@@ -19,7 +19,8 @@
     "pages/agent/apply",
     "pages/agent/list",
     "pages/agent/user",
-    "pages/bonus/index"
+    "pages/bonus/index",
+    "pages/vip/index"
   ],
   "window": {
     "navigationBarBackgroundColor": "#ffffff",

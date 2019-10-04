@@ -64,6 +64,7 @@
   right: 0;
   top: 50%;
   margin-top: -13rpx;
+  font-size: 36rpx;
 }
 
 .goods-property-jianTou image {
@@ -81,7 +82,7 @@
 }
 
 .buyNumber {
-  color: #888;
+  color: #333;
   background: #fff;
   border-radius: 10rpx;
   margin-bottom: 10rpx;
@@ -93,8 +94,8 @@
 
 .tipstxt {
   font-size: 28rpx;
-  color: #888;
-  margin-bottom: 10rpx;
+  color: #333;
+  margin-bottom: 24rpx;
 }
 
 .cartypelist {
@@ -117,9 +118,9 @@
 }
 
 .cartypeitem.cur {
-  background: #ff495e;
+  background: #9B7D6B;
   color: #fff;
-  border: 1rpx solid #ff495e;
+  border: 1rpx solid #9B7D6B;
 }
 
 .cartypeitem.cur:after {
@@ -161,7 +162,7 @@
 
 .order-number {
   width: 50%;
-  background-color: #f4a213;
+  background-color: #DCA772;
   color: #fff;
   text-align: center;
   line-height: 46px;

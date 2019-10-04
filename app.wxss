@@ -420,6 +420,18 @@ page {
   background: #fff;
 }
 
+
+.header-fixed {
+  position: fixed;
+  display: flex;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  height: 46px;
+  z-index: 18;
+  background: #fff;
+}
+
 .order-bt {
   width: 50%;
   background-color: #ff495e;

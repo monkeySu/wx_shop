@@ -6,19 +6,20 @@
 }
 
 .cart-tab-item-btn {
-  width: 160rpx;
+  width: 220rpx;
   display: block;
   height: 100rpx;
   line-height: 100rpx;
   font-size: 32rpx;
-  background: #ff495e;
+  background: #D73F3F;
   color: #fff;
   float: right;
   text-align: center;
+  margin-left: 16rpx;
 }
 
 .cart-tab-item {
-  width: 375rpx;
+  /* width: 375rpx; */
 }
 
 .cart-tab-wrp {
@@ -29,6 +30,7 @@
   border-top: 1rpx solid #ddd;
   display: flex;
   flex-direction: row;
+  justify-content: flex-end;
   width: 100%;
   z-index: 10;
   color: black;
@@ -40,7 +42,7 @@
 }
 
 .cart-tab-item .cart-item-total-price {
-  float: left;
+  /* float: left; */
 }
 
 .cart-item-total {
@@ -49,7 +51,7 @@
 
 .cart-item-total-price {
   font-size: 32rpx;
-  color: #ff495e;
+  color: #D73F3F;
   text-align: center;
 }
 
@@ -81,11 +83,12 @@
   width: 100%;
   display: flex;
   flex-direction: row;
+  align-items: center;
 }
 
 .dish-item-pic {
   width: 100%;
-  margin-left: 15px;
+  /* margin-left: 15px; */
 }
 
 .dish-item-pic image {
@@ -114,17 +117,50 @@
   padding: 0 0 10rpx 0;
 }
 
+.goods-type{
+  height:48rpx;
+  line-height: 48rpx;
+  background:rgba(247,247,247,1);
+  border-radius:4rpx;
+  padding: 0 4rpx;
+  display: inline-block;
+  margin-top: 14rpx;
+  font-size: 24rpx;
+  color:rgba(153,153,153,1);
+}
+
 .wx-goods_price .dish-item-money {
   float: left;
+  
+}
+
+.wx-goods_price .dish-flower-money {
+  float: left;
+  text-indent: 32rpx;
+  color: #DCA772;
+  position: relative;
+  
+  
+}
+
+.dish-flower-money:after{
+  content: "";
+  position: absolute;
+  left: 0;
+  width: 37rpx;
+  height: 37rpx;
+  background: url(https://img-mall.irishoney.com/Flkynoy8xQIvBYbYUPg9Gz081r-M.png) no-repeat center/100%;
 }
 
 .wx-goods_price {
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
 }
 
 .flow-dete {
   position: absolute;
-  bottom: 25rpx;
+  top: 26rpx;
   right: 30rpx;
 }
 
@@ -145,4 +181,15 @@
   text-align: center;
   color: #777;
   margin-top: 25rpx;
+}
+
+.selectNumber{
+  position: absolute;
+  right: 30rpx;
+  bottom: 26rpx;
+}
+
+.checkbox-box{
+  margin: 0 24rpx;
+  padding: 0;
 }

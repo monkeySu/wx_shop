@@ -109,17 +109,15 @@
 /* 订单导航栏 */
 
 .order-navbar {
-  position: absolute;
-  left: 19rpx;
-  bottom: -125rpx;
   margin: auto;
-  padding: 15rpx 0;
+  padding: 24rpx 0 36rpx 0;
   width: 95%;
   box-shadow: 0 1rpx 5rpx 0px rgba(0, 0, 0, 0.05);
   font-size: 30rpx;
   border-top: 1rpx solid #eee;
   border-radius: 5rpx;
   background: #fff;
+  margin-top: 28rpx;
 }
 
 .order-navbar-header {

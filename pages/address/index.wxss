@@ -58,15 +58,26 @@
 }
 
 .address-header {
-  padding: 28rpx 0;
+  padding: 32rpx 0;
   border-bottom: 1px solid #f6f6f9;
   background-size: 120rpx auto;
   font-size: 1.7rem;
+  position: relative;
+}
+
+.address-header:after {
+  content: "";
+  width: 32rpx;
+  height: 32rpx;
+  background: url(https://img-mall.irishoney.com/FvkbI7Fb_TpEmmx1z_FQoRWvxIoJ.png) center no-repeat/100%;
+  position: absolute;
+  top: 76rpx;
+  right: 32rpx;
 }
 
 .flow-header-left {
   flex: 14;
-  padding:0rpx 20rpx;
+  padding:0rpx 96rpx 0rpx 32rpx;
 }
 
 .flow-header-right {
@@ -81,7 +92,7 @@
 }
 
 .address-header .flow-checkout-admin {
-  font-size: 34rpx;
+  font-size: 28rpx;
   color: #444;
 }
 
@@ -90,11 +101,30 @@
 }
 
 .address-header .flow-checkout-address {
-  font-size: 26rpx;
-  color: #777;
-  margin-top: 6rpx;
+  font-size: 24rpx;
+  color: #999999;
+  margin-top: 8rpx;
+  width: 620rpx;
 }
 
 .radio-group raido {
   color: #f42424;
+}
+
+.add-adress{
+  width:100vw;
+  height:98rpx;
+  background:rgba(255,255,255,1);
+  font-size:32rpx;
+  font-family:PingFang-SC-Medium,PingFang-SC;
+  font-weight:500;
+  color:rgba(220,167,114,1);
+  line-height:98rpx;
+  text-indent: 88rpx;
+  margin-top: 24rpx;
+  margin-bottom: 24rpx;
+}
+
+.phone-box{
+  float: right;
 }

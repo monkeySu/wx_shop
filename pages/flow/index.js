@@ -9,6 +9,7 @@ Page({
     goods_list: [], // 商品列表
     order_total_num: 0,
     order_total_price: 0,
+    selectList: []
   },
 
   /**
@@ -37,10 +38,25 @@ Page({
    */
   getCartList() {
     let _this = this;
-    App._get('cart/lists', {}, function(result) {
+    App._get('/user/cart/list', {}, function(result) {
       _this.setData(result.data);
+      // _this.InitArray(result.data.list)
     });
   },
+
+  // 初始化选中列表
+  // InitArray(list){
+  //   let selectList = []
+  //   list.map((value, index) => {
+  //     if(value.select){
+  //       selectList.push(index)
+  //     } 
+  //   })
+
+  //   this.setData({
+  //     selectList
+  //   })
+  // },
 
   /**
    * 递增指定的商品数量
@@ -106,14 +122,16 @@ Page({
   del(e) {
     let _this = this,
       goods_id = e.currentTarget.dataset.goodsId,
-      goodsSkuId = e.currentTarget.dataset.skuId;
+      goodsSkuId = e.currentTarget.dataset.specId;
+
+      console.log(e)
     wx.showModal({
       title: "提示",
       content: "您确定要移除当前商品吗?",
       success(e) {
-        e.confirm && App._post_form('cart/delete', {
+        e.confirm && App._post_form('/user/cart/del', {
           goods_id,
-          goods_sku_id: goodsSkuId
+          spec_id: goodsSkuId
         }, function(result) {
           _this.getCartList();
         });
@@ -142,6 +160,53 @@ Page({
    */
   mathsub(arg1, arg2) {
     return (Number(arg1) - Number(arg2)).toFixed(2);
+  },
+
+  selectGoods(e){
+    const {
+      value
+    } = e.detail
+
+    let { list } = this.data
+    console.log(value.length)
+    let select_cart = []
+
+    value.map((item, key) => {
+      select_cart.push({
+        goods_id: list[item].goods_id,
+        spec_id: list[item].goods_spec_id,
+      })
+    })
+    // if(value.length > selectList.length){
+    //   value.map((item, key) => {
+    //     var res = selectList.find((val) => {
+    //       return val == item
+    //     })
+  
+    //     if(typeof(res == 'undefined')){
+    //       selectValue = item
+    //       selectList.push(item)
+    //     }
+    //   })
+    // }else{
+    //   selectList.map((item, key) => {
+    //     var res = value.find((val) => {
+    //       return item == val
+    //     })
+  
+    //     if(typeof(res == 'undefined')){
+    //       selectValue = item
+    //       selectList.splice(key, 1)
+    //     }
+    //   })
+    // }
+    // return console.log(value)
+    
+    
+    App._post('/user/cart/select', {
+      select_cart
+    }, () => {
+    });
   },
 
   /**

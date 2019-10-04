@@ -124,7 +124,7 @@ App({
 
     // 构造请求参数
     data = Object.assign({
-      wxapp_id: 10001,
+      // wxapp_id: 10001,
       // token: wx.getStorageSync('token')
     }, data);
 
@@ -137,6 +137,7 @@ App({
         url: App.api_root + url,
         header: {
           'content-type': 'application/json',
+          // 'content-type': 'application/json',
           'Authorization': token
         },
         data,
@@ -173,19 +174,73 @@ App({
   },
 
   /**
-   * post提交
+   * post提交 表单
    */
   _post_form(url, data, success, fail, complete) {
     wx.showNavigationBarLoading();
     let App = this;
     // 构造请求参数
     data = Object.assign({
-      wxapp_id: 10001
+      // wxapp_id: 10001
     }, data);
     wx.request({
       url: App.api_root + url,
       header: {
         'content-type': 'application/x-www-form-urlencoded',
+        'Authorization': wx.getStorageSync('token')
+      },
+      method: 'POST',
+      data,
+      success(res) {
+        if(res.statusCode === 403) {
+          App.doLogin(() => {
+            App._post_form(url, data, success, fail);
+          });
+          return false;
+        } else if (res.statusCode !== 200 || typeof res.data !== 'object') {
+          App.showError('网络请求出错');
+          return false;
+        }
+        if (res.data.code === -1) {
+          // 登录态失效, 重新登录
+          App.doLogin(() => {
+            App._post_form(url, data, success, fail);
+          });
+          return false;
+        } else if (res.data.code === 0) {
+          success && success(res.data);
+        }else{
+          App.showError(res.data.msg, () => {
+            fail && fail(res);
+          });
+          return false;
+        }
+      },
+      fail(res) {
+        // console.log(res);
+        App.showError(res.errMsg, () => {
+          fail && fail(res);
+        });
+      },
+      complete(res) {
+        wx.hideLoading();
+        wx.hideNavigationBarLoading();
+        complete && complete(res);
+      }
+    });
+  },
+
+  _post(url, data, success, fail, complete) {
+    wx.showNavigationBarLoading();
+    let App = this;
+    // 构造请求参数
+    data = Object.assign({
+      // wxapp_id: 10001
+    }, data);
+    wx.request({
+      url: App.api_root + url,
+      header: {
+        'content-type': 'application/json',
         'Authorization': wx.getStorageSync('token')
       },
       method: 'POST',
@@ -298,7 +353,7 @@ App({
    * 验证登录
    */
   checkIsLogin() {
-    return wx.getStorageSync('token') != '' && wx.getStorageSync('user_id') != '';
+    return wx.getStorageSync('token') != '';
   },
 
   /**
@@ -326,8 +381,8 @@ App({
           console.log(result)
           // 记录token user_id
           wx.setStorageSync('token', result.data.token);
-          wx.setStorageSync('user_id', 
-          result.data.user_id);
+          // wx.setStorageSync('user_id', 
+          // result.data.user_id);
           App._post_form('/wx/xcx/update', {
             encrypted_data: e.detail.encryptedData,
             iv: e.detail.iv,
