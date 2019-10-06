@@ -19,6 +19,7 @@ App({
    */
   globalData: {
     user_id: null,
+    address: {}
   },
 
   api_root: 'https://mall.irishoney.com/api', // api地址
@@ -142,12 +143,13 @@ App({
         },
         data,
         success(res) {
-          if (res.statusCode !== 200 || typeof res.data !== 'object') {
-            console.log(res);
+          if ((res.statusCode !== 200 && res.statusCode !== 403) || typeof res.data !== 'object') {
+            
             App.showError('网络请求出错');
             return false;
           }
-          if (res.data.code === -1) {
+          if (res.data.code === -1 || res.statusCode == 403) {
+            console.log('do')
             // 登录态失效, 重新登录
             wx.hideNavigationBarLoading();
             App.doLogin();

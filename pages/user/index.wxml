@@ -1,7 +1,7 @@
 <view class="container">
   <!-- 用户信息 -->
   <view class="user">
-    <view class="user-header" style="background-image: url('/images/user-bg.png');">
+    <view class="user-header" style="background-image: url('https://img-mall.irishoney.com/Fj6jqd-XQ7BlNDP5tGJkDQdNCpA2.png');">
       <!-- 已登录 -->
       <view wx:if="{{ isLogin }}" class="user-header-cont">
         <view class="user-header-avatar">
@@ -19,18 +19,18 @@
     </view>
 
     <!-- 会员 -->
-    <view class="vip-box">
+    <navigator url="../vip/index" class="vip-box">
       成为会员 尊享VIP
-    </view>
+    </navigator>
     <!-- 财富数量 -->
     <view class="wealth-box">
-      <view class="wealth-item">
+      <view class="wealth-item item-1">
         <view class="wealth-count">
           889
         </view>
         <view class="wealth-name">我的鸢尾花</view>
       </view>
-      <view class="wealth-item">
+      <view class="wealth-item item-2">
         <view class="wealth-count">
           889
         </view>
@@ -101,7 +101,8 @@
         <view class="order-navbar-item flex-box">
           <form bindsubmit="onTargetOrder" data-type="payment" report-submit="true">
             <button formType="submit" class="btn-normal">
-              <text class="order-navbar__icon iconfont icon-form"></text>
+              <!-- <text class="order-navbar__icon iconfont icon-form"></text> -->
+              <image class="icon" src="https://img-mall.irishoney.com/FobiFYl36Kr3hTadATIFOjsOXMN4.png"></image>
               <text class="order-navbar__name">待付款</text>
             </button>
           </form>
@@ -109,7 +110,8 @@
         <view class="order-navbar-item flex-box">
           <form bindsubmit="onTargetOrder" data-type="delivery" report-submit="true">
             <button formType="submit" class="btn-normal">
-              <text class="order-navbar__icon iconfont icon-daifukuan"></text>
+              <!-- <text class="order-navbar__icon iconfont icon-daifukuan"></text> -->
+              <image class="icon" src="https://img-mall.irishoney.com/Fmj34eDMZeOJKOA5kcmFmf478sym.png"></image>
               <text class="order-navbar__name">待发货</text>
               <text class="order-badge" wx:if="{{orderCount.payment > 0}}">{{orderCount.payment}}</text>
             </button>
@@ -118,7 +120,7 @@
         <view class="order-navbar-item flex-box">
           <form bindsubmit="onTargetOrder" data-type="received" report-submit="true">
             <button formType="submit" class="btn-normal">
-              <text class="order-navbar__icon iconfont icon-daishouhuo"></text>
+              <image class="icon" src="https://img-mall.irishoney.com/FvkW9S1KsM1umWDksItSblmdCKKG.png"></image>
               <text class="order-navbar__name">待收货</text>
               <text class="order-badge" wx:if="{{orderCount.received > 0}}">{{orderCount.received}}</text>
             </button>
@@ -127,7 +129,7 @@
         <view class="order-navbar-item flex-box">
           <form bindsubmit="onTargetOrder" data-type="evaluate" report-submit="true">
             <button formType="submit" class="btn-normal">
-              <text class="order-navbar__icon iconfont icon-daishouhuo"></text>
+              <image class="icon" src="https://img-mall.irishoney.com/FvkW9S1KsM1umWDksItSblmdCKKG.png"></image>
               <text class="order-navbar__name">待评价</text>
               <text class="order-badge" wx:if="{{orderCount.received > 0}}">{{orderCount.received}}</text>
             </button>
@@ -152,7 +154,7 @@
         <view class="order-navbar-item flex-box">
           <form bindsubmit="onTargetOrder" data-type="all" report-submit="true">
             <button formType="submit" class="btn-normal">
-              <text class="order-navbar__icon iconfont icon-form"></text>
+                <image class="icon" src="https://img-mall.irishoney.com/FrJgk-daz2xl-k7xQS0vK0nMcuXY.png"></image> 
               <text class="order-navbar__name">可归还</text>
             </button>
           </form>
@@ -160,7 +162,7 @@
         <view class="order-navbar-item flex-box">
           <form bindsubmit="onTargetOrder" data-type="payment" report-submit="true">
             <button formType="submit" class="btn-normal">
-              <text class="order-navbar__icon iconfont icon-daifukuan"></text>
+              <image class="icon" src="https://img-mall.irishoney.com/FhqM08L2BP3t0sgkycFn91flClCu.png"></image> 
               <text class="order-navbar__name">待归还</text>
               <text class="order-badge" wx:if="{{orderCount.payment > 0}}">{{orderCount.payment}}</text>
             </button>
@@ -169,16 +171,18 @@
         <view class="order-navbar-item flex-box">
           <form bindsubmit="onTargetOrder" data-type="received" report-submit="true">
             <button formType="submit" class="btn-normal">
-              <text class="order-navbar__icon iconfont icon-daishouhuo"></text>
+              <image class="icon" src="https://img-mall.irishoney.com/Fi7U3i6dINFWqEcMdm5xavwZV6vw.png"></image> 
               <text class="order-navbar__name">归还中</text>
               <text class="order-badge" wx:if="{{orderCount.received > 0}}">{{orderCount.received}}</text>
             </button>
           </form>
         </view>
         <view class="order-navbar-item flex-box">
-          <text class="order-navbar__icon iconfont icon-daipingjia"></text>
-          <text class="order-navbar__name">已归还</text>
-          <text class="order-badge" wx:if="{{ false }}"></text>
+          <button formType="submit" class="btn-normal">
+            <image class="icon" src="https://img-mall.irishoney.com/Fnxt3BMRYNlzciO0YkwgFwNna62G.png"></image> 
+            <text class="order-navbar__name">已归还</text>
+            <text class="order-badge" wx:if="{{ false }}"></text>
+          </button>
         </view>
       </view>
     </view>
@@ -200,7 +204,7 @@
         <view class="order-navbar-item flex-box">
           <form bindsubmit="onTargetOrder" data-type="all" report-submit="true">
             <button formType="submit" class="btn-normal">
-              <text class="order-navbar__icon iconfont icon-form"></text>
+              <image class="icon" src="https://img-mall.irishoney.com/FgFv24dcWD_LtggGmh0gvH2ffQ9t.png"></image> 
               <text class="order-navbar__name">关于我们</text>
             </button>
           </form>
@@ -208,7 +212,7 @@
         <view class="order-navbar-item flex-box">
           <form bindsubmit="onTargetOrder" data-type="payment" report-submit="true">
             <button formType="submit" class="btn-normal">
-              <text class="order-navbar__icon iconfont icon-daifukuan"></text>
+              <image class="icon" src="https://img-mall.irishoney.com/Fg5IAz7yfZHfMEihEsbLWGg_-vxg.png"></image> 
               <text class="order-navbar__name">成为会员</text>
               <text class="order-badge" wx:if="{{orderCount.payment > 0}}">{{orderCount.payment}}</text>
             </button>
@@ -217,23 +221,26 @@
         <view class="order-navbar-item flex-box">
           <form bindsubmit="onTargetOrder" data-type="received" report-submit="true">
             <button formType="submit" class="btn-normal">
-              <text class="order-navbar__icon iconfont icon-daishouhuo"></text>
+              <image class="icon" src="https://img-mall.irishoney.com/FtDU748aduOk8MXfaLMtXPaf6ja1.png"></image> 
               <text class="order-navbar__name">成为合伙人</text>
               <text class="order-badge" wx:if="{{orderCount.received > 0}}">{{orderCount.received}}</text>
             </button>
           </form>
         </view>
         <view class="order-navbar-item flex-box">
-          <text class="order-navbar__icon iconfont icon-daipingjia"></text>
-          <text class="order-navbar__name">成为销售代理</text>
-          <text class="order-badge" wx:if="{{ false }}"></text>
+          <button formType="submit" class="btn-normal">
+
+            <image class="icon" src="https://img-mall.irishoney.com/FlualhAAxykj4tBozMcIxWY9UKr7.png"></image>
+            <text class="order-navbar__name">成为销售代理</text>
+            <text class="order-badge" wx:if="{{ false }}"></text>
+          </button>
         </view>
       </view>
       <view class="order-navbar-footer dis-flex m-top10">
         <view class="order-navbar-item flex-box">
           <form bindsubmit="onTargetOrder" data-type="all" report-submit="true">
             <button formType="submit" class="btn-normal">
-              <text class="order-navbar__icon iconfont icon-form"></text>
+              <image class="icon" src="https://img-mall.irishoney.com/FrcMLfkYJcTI_JjspKrn6hmYJ1Mx.png"></image>
               <text class="order-navbar__name">申请人列表</text>
             </button>
           </form>
@@ -241,25 +248,28 @@
         <view class="order-navbar-item flex-box">
           <form bindsubmit="onTargetOrder" data-type="payment" report-submit="true">
             <button formType="submit" class="btn-normal">
-              <text class="order-navbar__icon iconfont icon-daifukuan"></text>
+              <image class="icon" src="https://img-mall.irishoney.com/FttN2dQOgk12xEOR7dCuwjraalMk.png"></image>
               <text class="order-navbar__name">收货地址</text>
               <text class="order-badge" wx:if="{{orderCount.payment > 0}}">{{orderCount.payment}}</text>
             </button>
           </form>
         </view>
         <view class="order-navbar-item flex-box">
-          <form bindsubmit="onTargetOrder" data-type="received" report-submit="true">
-            <button formType="submit" class="btn-normal">
-              <text class="order-navbar__icon iconfont icon-daishouhuo"></text>
+          <navigator url="../password/list">
+            <button class="btn-normal">
+              <image class="icon" src="https://img-mall.irishoney.com/FuAo6WWoBaCZXgZ5LtOmgJa1lYj3.png"></image>
               <text class="order-navbar__name">支付密码</text>
               <text class="order-badge" wx:if="{{orderCount.received > 0}}">{{orderCount.received}}</text>
             </button>
-          </form>
+          </navigator>
         </view>
         <view class="order-navbar-item flex-box">
-          <text class="order-navbar__icon iconfont icon-daipingjia"></text>
-          <text class="order-navbar__name">关注服务号</text>
-          <text class="order-badge" wx:if="{{ false }}"></text>
+          <button class="btn-normal">
+
+            <image class="icon" src="https://img-mall.irishoney.com/FtlBSc2XBw00K9KcIk0FXFmmKn-w.png"></image>
+            <text class="order-navbar__name">关注服务号</text>
+            <text class="order-badge" wx:if="{{ false }}"></text>
+          </button>
         </view>
       </view>
     </view>

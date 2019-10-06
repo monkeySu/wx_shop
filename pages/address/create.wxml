@@ -48,7 +48,8 @@
       </view>
     </view>
     <view class="footer-fixed">
-      <button class="save-btn" formType="submit" disabled="{{disabled}}">新增地址</button>
+      <button class="save-btn" formType="submit" disabled="{{disabled}}">
+        {{id>0?'修改':'新增地址'}}</button>
     </view>
   </form>
 </view>

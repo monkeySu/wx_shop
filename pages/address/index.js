@@ -25,7 +25,7 @@ Page({
       result.data.list.map((value, index) => {
         let arr = result.data.list[index].tel_number.split('')
         arr.splice(3,4,'*','*','*','*')
-        result.data.list[index].tel_number = arr.join('')
+        result.data.list[index].number = arr.join('')
       })
       _this.setData(result.data);
     });
@@ -35,6 +35,8 @@ Page({
    * 添加新地址
    */
   createAddress: function() {
+    App.globalData.address = {}
+
     wx.navigateTo({
       url: './create?id=0'
     });
@@ -44,10 +46,28 @@ Page({
    * 编辑地址
    */
   editAddress: function(e) {
-
+    const {
+      dataset: {
+        item
+      }
+    } = e.currentTarget
+    App.globalData.address = item
     wx.navigateTo({
-      url: "./create?id=" + e.currentTarget.dataset.id
+      url: "./create?id=" + item.id
     });
+  },
+
+  selectAddress(e){
+    if(this.data.options.from == "flow"){
+      const {
+        dataset: {
+          item
+        }
+      } = e.currentTarget
+      App.globalData.address = item
+      wx.navigateBack({
+      })
+    }
   },
 
   /**

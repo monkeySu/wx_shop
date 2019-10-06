@@ -4,12 +4,15 @@
     <view bindtap="createAddress" class="add-adress" style="width:100%">添加新地址</view>
   <!-- </view> -->
   <custom-ul class="addres-list" wx:if="{{list.length}}">
-    <custom-li bindtap="editAddress" data-id="{{item}}" wx:for="{{list}}" wx:for-item="item" wx:key="this">
+    <custom-li bindtap="selectAddress" data-item="{{item}}" wx:for="{{list}}" wx:for-item="item" wx:key="this">
       <view class="address-header b-f m-top18">
+        <view bindtap="editAddress"  data-item="{{item}}" class="address-header-icon" hover-class="none" hover-stop-propagation="false">
+          
+        </view>
         <view class="flow-header-left pl-12">
           <view class="flow-checkout-admin">
             {{item.user_name}}
-            <view class="phone-box">{{item.tel_number}}</view>
+            <view class="phone-box">{{item.number}}</view>
           </view>
           <view class="flow-checkout-address">
             {{item.province.name}} {{item.city.name}} {{item.county.name}} {{item.detail_info}}

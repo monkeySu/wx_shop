@@ -127,7 +127,7 @@ Page({
   },
 
   /**
-   * 更新商品规格信息
+   * 更新商品规格信息A
    */
   updateSpecGoods() {
     let spec_sku_id = this.goods_spec_arr.join('_');

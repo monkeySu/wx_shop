@@ -25,6 +25,9 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
+    this.setData({
+      ...options
+    })
     if(options.id> 0) {
       const {
         address: {
@@ -32,20 +35,42 @@ Page({
           city,
           county,
           tel_number,
-          user_name
+          user_name,
+          detail_info
         }
-      } = app.globalData
+      } = App.globalData
 
-      this.getRegion(province.id, 0, (res) => {
-        this.getRegion(city.id, 1, (result) => {
-          this.getRegion(county.id, 2)
+      let addressCheck = []
+
+      this.getRegion(0, 0, (res) => {
+        res.list.map((value, index) => {
+          if(value.id == province.id ){
+            addressCheck[0] = index
+          }
+        })
+        this.getRegion(province.id, 1, (result) => {
+          result.list.map((value, index) => {
+            if(value.id == city.id ){
+              addressCheck[1] = index
+            }
+          })
+          this.getRegion(city.id, 2, (results) => {
+            results.list.map((value, index) => {
+              if(value.id == county.id ){
+                addressCheck[2] = index
+                this.setData({
+                  tel_number,
+                  user_name,
+                  detail_info,
+                  addressCheck
+                })
+              }
+            })
+          })
         })
       })
 
-      this.setData({
-        tel_number,
-        user_name
-      })
+      
     }else{
       this.getRegion(0, 0, (res) => {
         this.getRegion(res.list[0].id, 1, (result) => {
@@ -82,8 +107,9 @@ Page({
       disabled: true
     });
 
-    if(options.id> 0) {
+    if(this.data.id> 0) {
       // 提交到后端
+      values.id = this.data.id
       App._post_form('/user/address/update', values, function(result) {
         App.showSuccess(result.msg, function() {
           wx.navigateBack();

@@ -1,0 +1,9 @@
+<!--pages/password/list.wxml-->
+<view class="container" hover-class="none" hover-stop-propagation="false">
+    <navigator class="list" open-type="navigate"  url="./creat" hover-class="none" hover-stop-propagation="false">
+        创建密码
+    </navigator>
+    <navigator class="list" open-type="navigate"  url="" hover-class="none" hover-stop-propagation="false">
+        忘记密码
+    </navigator>
+</view>

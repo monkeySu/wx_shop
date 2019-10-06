@@ -20,7 +20,10 @@
     "pages/agent/list",
     "pages/agent/user",
     "pages/bonus/index",
-    "pages/vip/index"
+    "pages/vip/index",
+    "pages/password/list",
+    "pages/password/creat",
+    "pages/password/forget"
   ],
   "window": {
     "navigationBarBackgroundColor": "#ffffff",

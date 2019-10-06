@@ -66,17 +66,21 @@ Page({
         App.showError(result.msg);
         return false;
       }
+
+      console.log(result.data)
+
       // 发起微信支付
       wx.requestPayment({
-        timeStamp: result.data.timeStamp,
-        nonceStr: result.data.nonceStr,
-        package: 'prepay_id=' + result.data.prepay_id,
+        timeStamp: ''+result.data.time_stamp,
+        nonceStr: result.data.nonce_str,
+        package: result.data.package,
         signType: 'MD5',
-        paySign: result.data.paySign,
+        paySign: result.data.pay_sign,
         success: function (res) {
           _this.getOrderDetail(order_id);
         },
-        fail: function () {
+        fail: function (err) {
+          console.log(err)
           App.showError('订单未支付');
         },
       });

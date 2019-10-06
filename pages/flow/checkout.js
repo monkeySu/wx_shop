@@ -9,9 +9,10 @@ Page({
     nav_select: false, // 快捷导航
     options: {}, // 当前页面参数
 
-    address: null, // 默认收货地址
+    address: {}, // 默认收货地址
     exist_address: false, // 是否存在收货地址
     goods: {}, // 商品信息
+    goods_pay_type: {},
 
     disabled: false,
 
@@ -34,6 +35,9 @@ Page({
   onShow: function() {
     // 获取当前订单信息
     this.getOrderData();
+    this.setData({
+      address: App.globalData.address
+    })
   },
 
   /**
@@ -45,7 +49,7 @@ Page({
 
     // 获取订单信息回调方法
     let callback = function(result) {
-      if (result.code !== 1) {
+      if (result.code !== 0) {
         App.showError(result.msg);
         return false;
       }
@@ -60,7 +64,7 @@ Page({
 
     // 立即购买
     if (options.order_type === 'buyNow') {
-      App._get('order/buyNow', {
+      App._post_form('/goods/order/budget', {
         goods_id: options.goods_id,
         goods_num: options.goods_num,
         goods_sku_id: options.goods_sku_id,
@@ -71,7 +75,7 @@ Page({
 
     // 购物车结算
     else if (options.order_type === 'cart') {
-      App._get('order/cart', {}, function(result) {
+      App._post_form('/goods/order/budget', {}, function(result) {
         callback(result);
       });
     }
@@ -83,7 +87,60 @@ Page({
    */
   selectAddress: function() {
     wx.navigateTo({
-      url: '../address/' + (this.data.exist_address ? 'index?from=flow' : 'create')
+      url: '../address/index?from=flow'
+    });
+  },
+
+  // 选择支付方式
+  selectPay(e){
+    console.log(e)
+    const value = e.detail.value
+    const id  = value.split(',')[0];
+    const type =  value.split(',')[1];
+    console.log(id, type)
+
+    this.setData({
+      goods_pay_type: {
+        ...this.data.goods_pay_type,
+        [id]: type
+      }
+    }, () => {
+      this.getOrderBudget()
+    })
+  },
+
+  getOrderBudget() {
+    const {
+      address,
+      goods_pay_type
+    } = this.data
+
+    const _this = this
+
+    if(JSON.stringify(address)=="{}"){
+      wx.showToast({
+        title: '请先选择收货地址',
+        icon: 'none',
+        image: '',
+        duration: 1500,
+        mask: false,
+        success: (result)=>{
+          
+        },
+        fail: ()=>{},
+        complete: ()=>{}
+      });
+      return false
+    }
+
+
+    App._post('/goods/order/budget', {
+      address_id: address.id,
+      goods_pay_type
+    }, function(result) {
+      _this.setData({
+        ...result.data
+      })
     });
   },
 

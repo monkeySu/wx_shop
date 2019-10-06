@@ -65,8 +65,7 @@
   position: relative;
 }
 
-.address-header:after {
-  content: "";
+.address-header-icon {
   width: 32rpx;
   height: 32rpx;
   background: url(https://img-mall.irishoney.com/FvkbI7Fb_TpEmmx1z_FQoRWvxIoJ.png) center no-repeat/100%;
