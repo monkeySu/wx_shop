@@ -45,7 +45,7 @@ Page({
     this.setData({
       address: App.globalData.address
     }, () => {
-      this.getOrderData();
+      this.getOrderBudget();
     })
   },
 
@@ -84,7 +84,9 @@ Page({
 
     // 购物车结算
     else if (options.order_type === 'cart') {
-      App._post_form('/goods/trade/budget', {}, function(result) {
+      App._post_form('/goods/trade/budget', {
+
+      }, function(result) {
         callback(result);
       });
     }
@@ -124,23 +126,6 @@ Page({
     } = this.data
 
     const _this = this
-
-    // if(JSON.stringify(address)=="{}"){
-    //   wx.showToast({
-    //     title: '请先选择收货地址',
-    //     icon: 'none',
-    //     image: '',
-    //     duration: 1500,
-    //     mask: false,
-    //     success: (result)=>{
-          
-    //     },
-    //     fail: ()=>{},
-    //     complete: ()=>{}
-    //   });
-    //   return false
-    // }
-
 
     App._post('/goods/trade/budget', {
       address_id: address.id || '',
@@ -197,8 +182,6 @@ Page({
       return false;
     }
 
-
-
     // 订单创建成功后回调--微信支付
     let callback = function(result) {
       if (result.code === -10) {
@@ -214,7 +197,7 @@ Page({
       wx.requestPayment({
         timeStamp: ''+result.data.time_stamp,
         nonceStr: result.data.nonce_str,
-        package: 'prepay_id=' + result.data.package,
+        package: result.data.package,
         signType: 'MD5',
         paySign: result.data.pay_sign,
         success: function(res) {

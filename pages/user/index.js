@@ -28,7 +28,7 @@ Page({
     });
     if (_this.data.isLogin) {
       // 获取当前用户信息
-      _this.getUserDetail();
+      // _this.getUserDetail();
     }
   },
 

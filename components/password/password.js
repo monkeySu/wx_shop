@@ -138,6 +138,7 @@ Component({
     // 点击聚焦
     set_focus() {
       let that = this;
+      console.log('set')
       that.setData({
         get_focus: true
       })

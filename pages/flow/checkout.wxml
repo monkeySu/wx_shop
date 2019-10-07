@@ -42,7 +42,7 @@
         <navigator class="navigate-box" url="../goods/index?goods_id={{item.goods_id}}">
 
           <view class="flow-list-left">
-            <image mode="scaleToFill" src="{{item.image[0].file_path}}"></image>
+            <image mode="scaleToFill" src="{{item.goods_cover}}"></image>
           </view>
           <view class="flow-list-right">
             <text class="f-30 col-3 twolist-hidden">{{item.name}}</text>
@@ -54,7 +54,7 @@
           <view class="pay-way">
             <radio-group bindchange="selectPay">
               <radio value="{{[item.id, 'integral_price']}}" color="#D73F3F">使用鸢尾花</radio>
-              <radio value="{{[item.id, 'price']}}" color="#D73F3F" style="margin-left: 48rpx">使用现金</radio>
+              <radio checked value="{{[item.id, 'price']}}" color="#D73F3F" style="margin-left: 48rpx">使用现金</radio>
             </radio-group>
           </view>
           <view class="price-box" hover-class="none" hover-stop-propagation="false">

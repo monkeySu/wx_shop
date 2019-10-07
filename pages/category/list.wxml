@@ -32,7 +32,7 @@
       </view> -->
 
     </view>
-    <scroll-view bindscrolltolower="bindDownLoad" class="weui-panel weui-panel_access" scroll-y="true" style="height: {{scrollHeight}}px; width: 750rpx;" wx:if="{{list.data.length > 0}}">
+    <scroll-view bindscrolltolower="bindDownLoad" class="weui-panel weui-panel_access" scroll-y="true" style="height: {{scrollHeight}}px; width: 750rpx;" wx:if="{{list.length > 0}}">
 
       <view class="new">
         <view class="category-list {{arrange}}">
@@ -66,7 +66,7 @@
   </view>
 
   <!-- 侧边栏 -->
-  <view class="slide-mask" wx:if="{{showSlide}}">
+  <view class="slide-mask" catchtap="closeSlide" wx:if="{{showSlide}}">
     <view class="slide-box" hover-class="none" hover-stop-propagation="false">
       <view class="slide-title" hover-class="none" hover-stop-propagation="false">
         分类

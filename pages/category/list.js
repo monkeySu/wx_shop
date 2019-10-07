@@ -58,10 +58,10 @@ Page({
    */
   getGoodsList: function (is_super, page) {
     let _this = this;
-    App._get('goods/lists', {
+    App._get('/category/list', {
       page: page || 1,
-      sortType: _this.data.sortType,
-      sortPrice: _this.data.sortPrice ? 1: 0,
+      new: _this.data.sortType,
+      price: _this.data.sortPrice ? 1: 0,
       category_id: _this.data.option.category_id || 0,
       search: _this.data.option.search || '',
     }, function (result) {
@@ -80,6 +80,12 @@ Page({
   showSlide(){
     this.setData({
       showSlide: true
+    })
+  },
+
+  closeSlide() {
+    this.setData({
+      showSlide: false
     })
   },
 
@@ -109,9 +115,7 @@ Page({
 
   // 确定搜索
   confirm(){
-    this.setData({
-      showSlide: false
-    })
+    this.closeSlide()
   },
 
   // 重置分类
