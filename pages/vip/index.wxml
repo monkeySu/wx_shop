@@ -43,8 +43,9 @@
             {{item.price}}元
         </view>
     </view>
-    <button bindtap="payVip" class="pay-btn">￥{{list[current].price}} 立即开通</button>
+    <button bindtap="showModal" data-name="{{list[current].name}}" class="pay-btn">￥{{list[current].price}} 立即开通</button>
     <view class="pay-btn-placeloader" hover-class="none" hover-stop-propagation="false">
         
     </view>
 </scroll-view>
+<modal isShow="{{showModal}}" bind:confirm="payVip" modal="{{modalData}}" />

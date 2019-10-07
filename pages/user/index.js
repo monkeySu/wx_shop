@@ -74,6 +74,24 @@ Page({
     })
   },
 
+  getPhoneNumber(e){
+    if (e.detail.errMsg.indexOf('getPhoneNumber:ok') > -1) {
+      App._post_form('/wx/xcx/phone', {
+        encrypted_data: e.detail.encryptedData,
+        iv: e.detail.iv
+      }, function(result) {
+        wx.navigateTo({
+          url: '../password/list'
+        })
+      });
+    }else{
+      wx.showToast({
+        title: '需要同意授权才能继续操作',
+        icon: 'none'
+    })
+    }
+  },
+
   /**
    * 跳转到登录页
    */

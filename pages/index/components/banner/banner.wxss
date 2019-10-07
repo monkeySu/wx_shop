@@ -36,3 +36,7 @@
 .swiper-box.dot-square .wx-swiper-dot {
   border-radius: unset;
 }
+
+.banner-box{
+  height: 296rpx;
+}

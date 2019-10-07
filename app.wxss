@@ -909,3 +909,26 @@ page {
 .xEmojiView {
   margin: 15rpx 0;
 }
+
+.flower-count{
+  font-size:24rpx;
+  font-family:PingFang-SC-Medium,PingFang-SC;
+  font-weight:500;
+  color:rgba(220,167,114,1);
+  line-height:34rpx;
+  height: 34rpx;
+  position: relative;
+  display: block;
+  text-indent: 24rpx;
+}
+
+.flower-count:after{
+  content: "";
+  background: url(https://img-mall.irishoney.com/Flkynoy8xQIvBYbYUPg9Gz081r-M.png) no-repeat center/100%;
+  width: 24rpx;
+  height: 24rpx;
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+}

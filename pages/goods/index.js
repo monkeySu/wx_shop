@@ -42,7 +42,10 @@ Page({
     // 商品id
     _this.data.goods_id = options.goods_id;
     // 获取商品信息
-    _this.getGoodsDetail();
+  },
+
+  onShow() {
+    this.getGoodsDetail();
   },
 
   /**
@@ -249,8 +252,10 @@ Page({
       submitType = e.currentTarget.dataset.type;
     const {
       spec_id,
-      goods_id
+      goods_id,
+      goods_num
     } = this.data
+
     if (submitType === 'buyNow') {
       // 立即购买
       wx.navigateTo({
@@ -265,7 +270,8 @@ Page({
       // 加入购物车
       App._post_form('/user/cart/add', {
         spec_id,
-        id: goods_id
+        id: goods_id,
+        num: goods_num
       }, function(result) {
         App.showSuccess(result.msg);
         _this.setData(result.data);

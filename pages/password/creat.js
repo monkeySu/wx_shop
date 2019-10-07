@@ -52,7 +52,20 @@ Page({
           passwd: password,
           passwd_repeat: detail
         }, function(result) {
-          App.showSuccess(result.msg);
+          // App.showSuccess(result.msg);
+          wx.showToast({
+            title: result.msg,
+            icon: 'none',
+            duration: 1500,
+            mask: false,
+            success: (result)=>{
+              wx.wx.navigateBack({
+                delta: 1
+              });
+            },
+            fail: ()=>{},
+            complete: ()=>{}
+          });
           // _this.setData(result.data);
         });
       // }else{

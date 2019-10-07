@@ -1,18 +1,111 @@
 <view class="container">
 
-  <scroll-view bindscroll="scroll" scroll-top="{{scrollTop}}" scroll-y="true" style="position:absolute; top:0; left:0; right:0; bottom:0;">
-    <block wx:for="{{items}}" wx:for-item="item" wx:for-index="item_key" wx:key="this">
+  <scroll-view bindscroll="scroll" scroll-top="{{scrollTop}}" scroll-y="true"
+    style="position:absolute; top:0; left:0; right:0; bottom:0;">
+    <block wx:for="{{list}}" wx:for-item="item" wx:for-index="item_key" wx:key="this">
       <!-- 搜索框 -->
       <block wx:if="{{item.type === 'search'}}">
         <include src="components/search/search.wxml" />
       </block>
       <!-- banner轮播 -->
-      <block wx:if="{{item.type === 'banner'}}">
+      <block wx:if="{{item.type === 'rotation'}}">
         <include src="components/banner/banner.wxml" />
       </block>
+
+      <!-- 通知 -->
+      <block wx:if="{{item.type == 'roll'}}">
+        <view class="notice" hover-class="none" hover-stop-propagation="false">
+          <swiper class="notice-box" indicator-dots="{{false}}" autoplay="{{true}}" interval="2000" duration="500"
+            circular="{{true}}" vertical="true" display-multiple-items="1" skip-hidden-item-layout="false">
+            <swiper-item wx:for="{{item.items}}" wx:for-item="s_item" wx:for-index="key" wx:key="key"
+              class="notice-item">
+              {{s_item.text}}
+            </swiper-item>
+          </swiper>
+        </view>
+      </block>
+
+      <!-- 推荐 -->
+      <view class="commodity-list" wx:if="{{item.type == 'flow'}}">
+        <view class="commodity-title" hover-class="none" hover-stop-propagation="false">
+          推荐产品
+        </view>
+        <navigator url="{{s_item.page}}" class="commodity-item" wx:for="{{item.items}}" wx:for-item="s_item"
+          wx:for-index="key" wx:key="key" hover-class="none" hover-stop-propagation="false">
+          <image src="{{s_item.img}}" class="item-img"></image>
+          <view class="item-content" hover-class="none" hover-stop-propagation="false">
+            <view class="content-title">{{s_item.name}}</view>
+            <view class="content-decs">{{s_item.describe}}</view>
+            <view class="content-original-price" hover-class="none" hover-stop-propagation="false">
+              ￥{{s_item.line_price}}
+            </view>
+            <view class="content-price" hover-class="none" hover-stop-propagation="false">
+              <view class="cash-price" hover-class="none" hover-stop-propagation="false">
+                ￥1222
+              </view>
+              <view class="flower-count" hover-class="none" hover-stop-propagation="false">
+                1499
+              </view>
+            </view>
+          </view>
+        </navigator>
+      </view>
+
+      <view class="commodity-list" wx:if="{{item.type == 'show'}}">
+        <view class="commodity-title" hover-class="none" hover-stop-propagation="false">
+          老板推荐
+        </view>
+
+        <swiper 
+          class="commodity-swiper" 
+          indicator-dots="{{false}}" 
+          interval="2000" 
+          duration="500" 
+          circular="{{false}}"
+          display-multiple-items="3" 
+          skip-hidden-item-layout="false"
+          next-margin="24rpx"
+          previous-margin="24rpx"
+          >
+          <swiper-item 
+            wx:for="{{item.items}}" 
+            wx:for-item="s_item" 
+            wx:for-index="key" 
+            wx:key="index"
+            class="commodity-swiper-item"
+          >
+            <navigator target="" url="{{s_item.page}}" hover-class="navigator-hover" open-type="navigate">
+              
+           
+              <image class="item-image" src="{{s_item.img}}" mode="aspectFit|aspectFill|widthFix" lazy-load="false"
+                binderror="" bindload="">
+              </image>
+              <view class="item-name" hover-class="none" hover-stop-propagation="false">
+                {{s_item.name}}
+              </view>
+              <view class="flower-count" hover-class="none" hover-stop-propagation="false">
+                1699.00
+              </view>
+              <view class="cash-price" hover-class="none" hover-stop-propagation="false">
+                ￥1699.00
+              </view>
+            </navigator>
+          </swiper-item>
+        </swiper>
+      </view>
+      <view wx:if="{{item.type =='video'}}" class="video-box" hover-class="none" hover-stop-propagation="false">
+        <video class="video" src="{{item.url}}" controls loop poster="{{activity.banner}}">
+        </video>
+      </view>
+
+      <navigator wx:if="{{item.type =='image'}}" url="{{item.page}}" class="video-box" hover-class="none" hover-stop-propagation="false">
+        <image src="{{item.url}}" mode="aspectFill">
+        </image>
+      </navigator>
     </block>
+
     <!-- 商品推荐 -->
-    <view class="recommended-index-list m-top20">
+    <!-- <view class="recommended-index-list m-top20">
       <view class="title-header b-f t-c f-32 col-3">新品推荐</view>
     </view>
     <view class="index_sale ">
@@ -29,129 +122,20 @@
           </view>
         </navigator>
       </scroll-view>
-    </view>
+    </view> -->
 
-    <!-- 通知 -->
-    <view class="notice" hover-class="none" hover-stop-propagation="false">
-      <swiper 
-        class="notice-box"
-        indicator-dots="{{false}}"
-        autoplay="{{true}}"
-        interval="2000" 
-        duration="500" 
-        circular="false" 
-        vertical="true" 
-        display-multiple-items="1" 
-        skip-hidden-item-layout="false" 
-      >
-      <swiper-item class="notice-item">
-        庆祝Dior迪奥珠宝问世二十周年
-      </swiper-item>
-      <swiper-item class="notice-item">
-        庆祝Dior迪奥珠宝问世二十周年
-      </swiper-item>
-      </swiper>
-    </view>
 
-    <!-- 商品列表 -->
 
-    <view class="commodity-list">
-      <view class="commodity-title" hover-class="none" hover-stop-propagation="false">
-        推荐产品
-      </view>
-      <view class="commodity-item" hover-class="none" hover-stop-propagation="false">
-        <image src="http://static.runoob.com/images/demo/demo2.jpg" class="item-img"></image>
-        <view class="item-content" hover-class="none" hover-stop-propagation="false">
-          <view class="content-title">750/1000黄金镶钻项链</view>
-          <view class="content-decs">750/该系列重新演绎Mimioui系列...</view>
-          <view class="content-original-price" hover-class="none" hover-stop-propagation="false">
-            ￥13333
-          </view>
-          <view class="content-price" hover-class="none" hover-stop-propagation="false">
-            <view class="cash-price" hover-class="none" hover-stop-propagation="false">
-              ￥1222
-            </view>
-            <view class="integral-price" hover-class="none" hover-stop-propagation="false">
-              1499
-            </view>
-          </view>
-        </view>
-      </view>
-
-      <swiper 
-        class="commodity-swiper"
-        indicator-dots="{{false}}"
-        interval="2000" 
-        duration="500" 
-        circular="false"
-        display-multiple-items="3" 
-        skip-hidden-item-layout="false"
-        next-margin="24rpx"
-      >
-      <swiper-item class="commodity-swiper-item">
-        <image class="item-image" src="http://static.runoob.com/images/demo/demo2.jpg" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload="">
-        </image>
-        <view class="item-name" hover-class="none" hover-stop-propagation="false">
-          OUI 750/1000玫…
-        </view>
-        <view class="integral-price" hover-class="none" hover-stop-propagation="false">
-          1699.00
-        </view>
-        <view class="price" hover-class="none" hover-stop-propagation="false">
-          1699.00
-        </view>
-      </swiper-item>
-      <swiper-item class="commodity-swiper-item">
-        <image class="item-image" src="http://static.runoob.com/images/demo/demo2.jpg" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload="">
-        </image>
-        <view class="item-name" hover-class="none" hover-stop-propagation="false">
-          OUI 750/1000玫…
-        </view>
-        <view class="integral-price" hover-class="none" hover-stop-propagation="false">
-          1699.00
-        </view>
-        <view class="price" hover-class="none" hover-stop-propagation="false">
-          1699.00
-        </view>
-      </swiper-item>
-      <swiper-item class="commodity-swiper-item">
-        <image class="item-image" src="http://static.runoob.com/images/demo/demo2.jpg" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload="">
-        </image>
-        <view class="item-name" hover-class="none" hover-stop-propagation="false">
-          OUI 750/1000玫…
-        </view>
-        <view class="integral-price" hover-class="none" hover-stop-propagation="false">
-          1699.00
-        </view>
-        <view class="price" hover-class="none" hover-stop-propagation="false">
-          1699.00
-        </view>
-      </swiper-item>
-      <swiper-item class="commodity-swiper-item">
-        <image class="item-image" src="http://static.runoob.com/images/demo/demo2.jpg" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload="">
-        </image>
-        <view class="item-name" hover-class="none" hover-stop-propagation="false">
-          OUI 750/1000玫…
-        </view>
-        <view class="integral-price" hover-class="none" hover-stop-propagation="false">
-          1699.00
-        </view>
-        <view class="price" hover-class="none" hover-stop-propagation="false">
-          1699.00
-        </view>
-      </swiper-item>
-      </swiper>
-    </view>
-    
     <!-- 猜您喜欢 -->
-    <view class="title-hrbg" style="margin-top:10rpx">
+    <!-- <view class="title-hrbg" style="margin-top:10rpx">
       <text class="cont">
         <text class="iconfont icon-huo col-m"></text>猜您喜欢
       </text>
       <view class="hr"></view>
     </view>
     <view class="category-list">
-      <navigator class="list b-f" hover-class="none" url="../goods/index?goods_id={{item.goods_id}}" wx:for="{{best}}" wx:key="this">
+      <navigator class="list b-f" hover-class="none" url="../goods/index?goods_id={{item.goods_id}}" wx:for="{{best}}"
+        wx:key="this">
         <view class="left">
           <view class="img">
             <image class="goodsImg" mode="scaleToFill" src="{{item.image[0].file_path}}"></image>
@@ -164,7 +148,7 @@
           </view>
         </view>
       </navigator>
-    </view>
+    </view> -->
 
     <!-- 底线 -->
     <view class="title-footer p-r">

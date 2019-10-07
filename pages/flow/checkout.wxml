@@ -9,7 +9,7 @@
             <view class="flow-checkout-admin f-30 col-3">
               <text>{{address.user_name}}</text>
               <text>{{address.tel_number}}</text>
-              <text class="col-m"></text>
+              <!-- <text class="col-m"></text> -->
             </view>
             <view class="flow-checkout-address">
               {{address.province.name}} {{address.city.name}} {{address.region.name}} {{address.detail_info}}
@@ -23,9 +23,9 @@
     </view>
     <view wx:else>
       <view class="flow-checkout-header">
-        <text class="iconfont icon-dingwei1"></text>
+        <text class="iconfont icon-dingwei1" style="color: #DCA772"></text>
         <view class="flow-header-left">
-          <view class="f-28 col-6">去选择配送地址
+          <view class="f-28 col-6" style="color: #DCA772">请选择配送地址
           </view>
         </view>
         <view class="flow-header-right p-r15">
@@ -54,7 +54,7 @@
           <view class="pay-way">
             <radio-group bindchange="selectPay">
               <radio value="{{[item.id, 'integral_price']}}" color="#D73F3F">使用鸢尾花</radio>
-              <radio color="#D73F3F" style="margin-left: 48rpx">使用现金</radio>
+              <radio value="{{[item.id, 'price']}}" color="#D73F3F" style="margin-left: 48rpx">使用现金</radio>
             </radio-group>
           </view>
           <view class="price-box" hover-class="none" hover-stop-propagation="false">
@@ -96,12 +96,31 @@
   <!-- 商品金额 -->
   <view class="flow-all-money b-f padding-box m-top20">
     <view class="dis-flex flow-all-list">
-      <text class="flex-five">商品总金额:</text>
+      <text class="flex-five">会员折扣:</text>
       <view class="flex-five t-r">
-        <text class="col-7">￥{{order_total_price}}</text>
+        <text class="col-7">{{vip.name.length>0?vip.name:'无vip'}}</text>
       </view>
     </view>
-
+    <view class="dis-flex flow-all-list">
+      <text class="flex-five">总运费:</text>
+      <view class="flex-five t-r">
+        <view wx:if="{{address.id}}">
+          <text class="col-7" wx:if="{{total.delivery_price>0}}">+￥{{total.delivery_price}}</text>
+          <text wx:else>不在配送范围</text>
+        </view>
+        <view wx:else>
+          <text class="col-7">请先选择配送地址</text>
+        </view>
+      </view>
+    </view>
+    <view class="dis-flex flow-all-list">
+      <text class="flex-five">实际付款:</text>
+      <view class="flex-five t-r ">
+        <view class="col-7">共计{{total.count}}件</view>
+        <view class="pay-total">积分鸢尾花：<text class="flower-count">{{total.integral}}</text></view>
+        <view class="pay-total">现金合计：<text class="flow-cont">￥{{total.price}}</text></view>
+      </view>
+    </view>
   </view>
 
   <!-- 提交订单 -->
@@ -110,7 +129,7 @@
       <view class=" chackout-left pl-12 ">实付款：
         <text class="col-m">￥{{total.price}}</text>
       </view>
-      <view bindtap="submitOrder" class="chackout-right">
+      <view bindtap="showPayModal" class="chackout-right">
         <text class="flow-btn">提交订单</text>
       </view>
     </view>
@@ -118,5 +137,5 @@
 
   <!-- 快捷导航 -->
   <shortcut></shortcut>
-
+  <modal bind:confirm="modalConfirm" modal="{{modalData}}" isShow="{{showModal}}" />
 </view>

@@ -1,0 +1,6 @@
+{
+  "component": true,
+  "usingComponents": {
+    "paySix": "/components/password/password"
+  }
+}

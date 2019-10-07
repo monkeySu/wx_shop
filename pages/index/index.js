@@ -20,9 +20,9 @@ Page({
 
   onLoad: function() {
     // 设置页面标题
-    App.setTitle();
-    // 设置navbar标题、颜色
-    App.setNavigationBar();
+    // App.setTitle();
+    // // 设置navbar标题、颜色
+    // App.setNavigationBar();
     // 获取首页数据
     this.getIndexData();
   },
@@ -32,7 +32,7 @@ Page({
    */
   getIndexData: function() {
     let _this = this;
-    App._get('index/page', {}, function(result) {
+    App._get('/index/page-setting', {}, function(result) {
       _this.setData(result.data);
     });
   },

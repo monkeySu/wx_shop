@@ -40,17 +40,39 @@
   z-index: -1;
 }
 
+.notice{
+  width: 100vw;
+  height: 136rpx;
+  background: #fff;
+  display: flex;
+  align-items: center;
+}
+
 .notice-box{
   width: 100vw;
   height: 88rpx;
   background:rgba(220,167,114,.1);
+  position: relative;
+}
 
+.notice-box:before{
+  content: "";
+  position: absolute;
+  width: 48rpx;
+  height: 48rpx;
+  background: url(https://img-mall.irishoney.com/Fh0HDmkURfDFrkFV7gjE0JpB4H-o.png) no-repeat center/ 100%;
+  top: 50%;
+  left: 24rpx;
+  transform: translateY(-50%);
 }
 
 .notice-item{
   width: 100vw;
   height: 88rpx;
   line-height: 88rpx;
+  text-indent: 80rpx;
+  position: relative;
+  color: #DCA772;
 }
 
 .commodity-list{
@@ -59,6 +81,7 @@
   flex-direction: column;
   align-items: center;
   background: #fff;
+  margin-top: 24rpx;
 }
 
 .commodity-title{
@@ -130,12 +153,19 @@
 
 .content-price{
   display: flex;
-  align-self: flex-end;
+  width: 100%;
+}
+
+.cash-price{
+  font-size: 24rpx;
+  color: #D73F3F;
+  margin-right: 20rpx;
 }
 
 .commodity-swiper{
   width: 100vw;
- 
+  padding-bottom: 12rpx;
+  height: 330rpx;
 }
 
 .commodity-swiper-item{
@@ -178,4 +208,18 @@
   font-weight:500;
   color:rgba(215,63,63,1);
   line-height:34rpx;   
+}
+
+.video-box{
+  width: 100vw;
+  padding-top: 24rpx;
+  display: flex;
+  justify-content: center;
+  background: #fff;
+}
+
+.video{
+  width:700rpx;
+  height:352rpx;
+  margin: 0 auto;
 }

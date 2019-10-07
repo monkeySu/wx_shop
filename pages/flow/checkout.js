@@ -18,6 +18,14 @@ Page({
 
     hasError: false,
     error: '',
+    modalData: {
+      title: '输入支付密码',
+      type: 'pay'
+    },
+
+    showModal: false,
+
+    password: ''
   },
 
   /**
@@ -34,9 +42,10 @@ Page({
    */
   onShow: function() {
     // 获取当前订单信息
-    this.getOrderData();
     this.setData({
       address: App.globalData.address
+    }, () => {
+      this.getOrderData();
     })
   },
 
@@ -64,7 +73,7 @@ Page({
 
     // 立即购买
     if (options.order_type === 'buyNow') {
-      App._post_form('/goods/order/budget', {
+      App._post_form('/goods/trade/budget', {
         goods_id: options.goods_id,
         goods_num: options.goods_num,
         goods_sku_id: options.goods_sku_id,
@@ -75,7 +84,7 @@ Page({
 
     // 购物车结算
     else if (options.order_type === 'cart') {
-      App._post_form('/goods/order/budget', {}, function(result) {
+      App._post_form('/goods/trade/budget', {}, function(result) {
         callback(result);
       });
     }
@@ -93,7 +102,6 @@ Page({
 
   // 选择支付方式
   selectPay(e){
-    console.log(e)
     const value = e.detail.value
     const id  = value.split(',')[0];
     const type =  value.split(',')[1];
@@ -117,31 +125,60 @@ Page({
 
     const _this = this
 
-    if(JSON.stringify(address)=="{}"){
-      wx.showToast({
-        title: '请先选择收货地址',
-        icon: 'none',
-        image: '',
-        duration: 1500,
-        mask: false,
-        success: (result)=>{
+    // if(JSON.stringify(address)=="{}"){
+    //   wx.showToast({
+    //     title: '请先选择收货地址',
+    //     icon: 'none',
+    //     image: '',
+    //     duration: 1500,
+    //     mask: false,
+    //     success: (result)=>{
           
-        },
-        fail: ()=>{},
-        complete: ()=>{}
-      });
-      return false
-    }
+    //     },
+    //     fail: ()=>{},
+    //     complete: ()=>{}
+    //   });
+    //   return false
+    // }
 
 
-    App._post('/goods/order/budget', {
-      address_id: address.id,
+    App._post('/goods/trade/budget', {
+      address_id: address.id || '',
       goods_pay_type
     }, function(result) {
       _this.setData({
         ...result.data
       })
     });
+  },
+
+  showPayModal() {
+    this.setData({
+      modalData: {
+        title: '输入支付密码',
+        type: 'pay',
+      },
+      showModal: true
+    })
+  },
+
+  modalConfirm(e) {
+    const {
+      modalData
+    } = this.data
+
+    if(modalData.type == "pay"){
+      this.data.password = e.detail.val
+      this.submitOrder()
+    }else{
+      wx.navigateTo({
+        url: '/pages/password/list'
+      })
+    }
+
+    this.setData({
+      showModal: false
+    })
   },
 
   /**
@@ -160,6 +197,8 @@ Page({
       return false;
     }
 
+
+
     // 订单创建成功后回调--微信支付
     let callback = function(result) {
       if (result.code === -10) {
@@ -173,11 +212,11 @@ Page({
       }
       // 发起微信支付
       wx.requestPayment({
-        timeStamp: result.data.payment.timeStamp,
-        nonceStr: result.data.payment.nonceStr,
-        package: 'prepay_id=' + result.data.payment.prepay_id,
+        timeStamp: ''+result.data.time_stamp,
+        nonceStr: result.data.nonce_str,
+        package: 'prepay_id=' + result.data.package,
         signType: 'MD5',
-        paySign: result.data.payment.paySign,
+        paySign: result.data.pay_sign,
         success: function(res) {
           // 跳转到订单详情
           wx.redirectTo({
@@ -195,6 +234,18 @@ Page({
       });
     };
 
+    const getTradeData = function (result) {
+      App._post_form('/goods/trade/pay', {
+        trade_id: result.trade_id
+      },(res) => {
+        callback(res)
+      },(err) => {
+
+      }, () => {
+        _this.data.disabled = false;
+      })
+    }
+
     // 按钮禁用, 防止二次提交
     _this.data.disabled = true;
 
@@ -203,16 +254,22 @@ Page({
       title: '正在处理...'
     });
 
+    const {
+      address,
+      goods_pay_type,
+      password
+    } = this.data
+
     // 创建订单-立即购买
     if (options.order_type === 'buyNow') {
-      App._post_form('order/buyNow', {
+      App._post('order/buyNow', {
         goods_id: options.goods_id,
         goods_num: options.goods_num,
         goods_sku_id: options.goods_sku_id,
       }, function(result) {
         // success
         console.log('success');
-        callback(result);
+        getTradeData(result.data);
       }, function(result) {
         // fail
         console.log('fail');
@@ -226,10 +283,14 @@ Page({
 
     // 创建订单-购物车结算
     else if (options.order_type === 'cart') {
-      App._post_form('order/cart', {}, function(result) {
+      App._post('/goods/trade/create', {
+        address_id: address.id || '',
+        goods_pay_type,
+        pay_passwd: password
+      }, function(result) {
         // success
-        console.log('success');
-        callback(result);
+
+        getTradeData(result.data);
       }, function(result) {
         // fail
         console.log('fail');

@@ -44,7 +44,7 @@
         "selectedIconPath": "images/tabBar/home_on.png"
       },
       {
-        "pagePath": "pages/category/index",
+        "pagePath": "pages/category/list",
         "text": "分类",
         "iconPath": "images/tabBar/cate.png",
         "selectedIconPath": "images/tabBar/cate_on.png"

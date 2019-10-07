@@ -13,17 +13,18 @@
       </view>
     </view>
     <view class="store_nav_cont dis-flex b-f b-b">
-      <view bindtap="switchSortType" data-type="all" class="flex-box t-c p-r" data-index="0 " id="list-{{sortType==='all'?true:0}}">
-        <text>综合</text>
-      </view>
-      <view bindtap="switchSortType" data-type="sales" class="flex-box t-c p-r" data-index="1" id="list-{{sortType==='sales'?true:0}}">
-        <text> 销量</text>
-      </view>
       <view bindtap="switchSortType" data-type="price" class="flex-box t-c p-r" data-index="2" id="list-{{sortType==='price'?true:0}}">
-        <text class="price"> 价格</text>
-        <text class="iconfont icon-jiantou-copy tf-180 top_jiantou {{sortPrice?'':'active'}}"></text>
-        <text class="iconfont icon-jiantou-copy bot_jiantou {{sortPrice?'active':''}}"></text>
+            <text class="price"> 价格</text>
+            <text class="iconfont icon-jiantou-copy tf-180 top_jiantou {{sortPrice?'':'active'}}"></text>
+            <text class="iconfont icon-jiantou-copy bot_jiantou {{sortPrice?'active':''}}"></text>
+          </view>
+      <view bindtap="switchSortType" data-type="all" class="flex-box t-c p-r" data-index="0 " id="list-{{sortType==='all'?true:0}}">
+        <text>新品</text>
       </view>
+      <view bindtap="showSlide" data-type="sales" class="flex-box t-c p-r" data-index="1" id="list-{{sortType==='sales'?true:0}}">
+        <text>分类</text>
+      </view>
+      
 
       <!-- <view bindtap="toSynthesize" class="flex-box t-c p-r" data-index="sort_order" id="list-0">
         <text>筛选 </text>
@@ -70,18 +71,19 @@
       <view class="slide-title" hover-class="none" hover-stop-propagation="false">
         分类
       </view>
-      <view class="slide-item" hover-class="none" hover-stop-propagation="false">
+      <view wx:for="{{categoryList}}" wx:for-item="f_item" wx:for-index="key" wx:key="key" class="slide-item" hover-class="none" hover-stop-propagation="false">
         <view class="slide-item-title" hover-class="none" hover-stop-propagation="false">
-          宝石款式
+          {{f_item.name}}
         </view>
         <view class="slide-item-options" hover-class="none" hover-stop-propagation="false">
-          <view class="option" hover-class="none" hover-stop-propagation="false">
-            银饰
-          </view>
-          <view class="option" hover-class="none" hover-stop-propagation="false">
-            金饰
+          <view wx:for="{{f_item.client}}" wx:key="item.id" bindtap="selectCategory" data-index="{{key}}" data-id="{{item.id}}" class="option {{categorySelect[key] == item.id?'selected':'default'}}" hover-class="none" hover-stop-propagation="false">
+            {{item.name}}
           </view>
         </view>
+      </view>
+      <view class="button-grounp" hover-class="none" hover-stop-propagation="false">
+        <button class="reset button" catchtap="reset">重置</button>
+        <button class="confirm button">确定</button>
       </view>
     </view>
   </view>

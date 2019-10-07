@@ -21,7 +21,9 @@ Page({
 
     page: 1,
 
-    showSlide: false
+    showSlide: false,
+
+    categorySelect: {}
   },
 
   /**
@@ -36,9 +38,19 @@ Page({
     // 记录option
     _this.setData({ option}, function () {
       // 获取商品列表
+      _this.getCategory()
       _this.getGoodsList(true);
     });
 
+  },
+
+  // 获取分类
+  getCategory() {
+    App._get('/category', {}, (res) => {
+      this.setData({
+        categoryList: res.data.list
+      })
+    })
   },
 
   /**
@@ -68,6 +80,44 @@ Page({
   showSlide(){
     this.setData({
       showSlide: true
+    })
+  },
+
+  // 选择分类
+  selectCategory(e) {
+    const {
+      dataset: {
+        id,
+        index
+      }
+    } = e.currentTarget
+
+    const {
+      categorySelect
+    } = this.data
+
+    if(categorySelect[index] == id){
+      delete categorySelect[index]
+    }else{
+      categorySelect[index] = id
+    }
+    this.setData({
+      categorySelect
+    })
+    console.log(categorySelect, id)
+  },
+
+  // 确定搜索
+  confirm(){
+    this.setData({
+      showSlide: false
+    })
+  },
+
+  // 重置分类
+  reset() {
+    this.setData({
+      categorySelect: {}
     })
   },
 
@@ -113,6 +163,7 @@ Page({
     });
   },
 
+  
   /**
    * 切换列表显示方式
    */
@@ -123,6 +174,8 @@ Page({
       arrange: _this.data.arrange ? "" : "arrange"
     });
   },
+
+  // 选中分类
 
   /**
    * 下拉到底加载数据

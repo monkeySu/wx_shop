@@ -1,0 +1,34 @@
+<!--components/model/index.wxml-->
+<view class="modal" wx:if="{{isShow}}" hover-class="none" hover-stop-propagation="false">
+    <view class="content" hover-class="none" hover-stop-propagation="false">
+        <view class="title" hover-class="none" hover-stop-propagation="false">
+            {{value.title}}
+        </view>
+        <view class="desc" hover-class="none" hover-stop-propagation="false">
+            <block wx:if="{{value.type=='pay'?true:false}}">
+
+                <paySix
+                    class="password-box"
+                    bindvalueSix="valueSix" 
+                    input_value="{{inputData.input_value}}" 
+                    value_length="{{inputData.value_length}}" 
+                    isNext="{{inputData.isNext}}" 
+                    get_focus="{{inputData.get_focus}}" 
+                    focus_class="{{inputData.focus_class}}" 
+                    value_num="{{inputData.value_num}}"
+                    height="{{inputData.height}}" 
+                    width="{{inputData.width}}" 
+                    see="{{inputData.see}}" 
+                    interval="{{inputData.interval}}">
+                </paySix>
+            </block>
+            <block wx:else>
+                {{value.desc}}
+            </block>
+        </view>
+        <view class="button-grounp" hover-class="none" hover-stop-propagation="false">
+            <button bindtap="cancel" class="cancel">{{value.cancelText}}</button>
+            <button bindtap="confirm" class="confirm">{{value.confirmText}}</button>
+        </view>
+    </view>
+</view>

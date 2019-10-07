@@ -167,8 +167,9 @@ Page({
       value
     } = e.detail
 
+    const _this = this
     let { list } = this.data
-    console.log(value.length)
+
     let select_cart = []
 
     value.map((item, key) => {
@@ -206,6 +207,7 @@ Page({
     App._post('/user/cart/select', {
       select_cart
     }, () => {
+      _this.getCartList();
     });
   },
 

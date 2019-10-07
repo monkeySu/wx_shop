@@ -138,6 +138,7 @@
   </view>
 </scroll-view>
 
+<modal />
 <!-- 返回顶部 -->
 <view bindtap="goTop" class="widget-goTop" wx:if="{{floorstatus}}">
   <text class="iconfont icon-fanhuidingbu"></text>

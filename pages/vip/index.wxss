@@ -95,6 +95,7 @@
 .pay-btn{
     width:686rpx;
     height:80rpx;
+    line-height: 80rpx;
     background:rgba(215,63,63,1);
     border-radius:4rpx;
     position: fixed;

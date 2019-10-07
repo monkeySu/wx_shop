@@ -9,7 +9,12 @@ Page({
   data: {
     current: 0,
     list: [],
-    x: '20rpx'
+    x: '20rpx',
+    showModal: false,
+    modalData: {
+      title: '提示',
+      desc: '是否成为'
+    }
   },
 
   /**
@@ -31,6 +36,17 @@ Page({
    */
   onShow: function () {
     this.getVipList()
+  },
+
+  showModal(e) {
+    console.log(e)
+    this.setData({
+      showModal: true,
+      modalData: {
+        title: '提示',
+        desc: `是否成为${e.currentTarget.dataset.name}`
+      }
+    })
   },
 
   getVipList(){
@@ -62,12 +78,10 @@ Page({
     // 显示loading
     wx.showLoading({ title: '正在处理...', });
     App._post_form('/vip/order', { vip_id }, function (result) {
-      if (result.code === -10) {
+      if (result.code !== 0) {
         App.showError(result.msg);
         return false;
       }
-
-      console.log(result.data)
 
       // 发起微信支付
       wx.requestPayment({
@@ -77,7 +91,10 @@ Page({
         signType: 'MD5',
         paySign: result.data.pay_sign,
         success: function (res) {
-          _this.getOrderDetail(order_id);
+          _this.getVipList();
+          this.setData({
+            showModal: false
+          })
         },
         fail: function (err) {
           console.log(err)

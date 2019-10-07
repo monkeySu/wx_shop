@@ -1,7 +1,7 @@
 <view class="container">
-    <view class="banner" hover-class="none" hover-stop-propagation="false">
+    <image class="banner" src="https://img-mall.irishoney.com/FkmItXdFsK6icl6tyvLI3jmIaiMY.png" hover-class="none" hover-stop-propagation="false">
         
-    </view>
+    </image>
     <view class="card">
         <view class="content-title" hover-class="none" hover-stop-propagation="false">
             <view class="rect-box before"></view>
