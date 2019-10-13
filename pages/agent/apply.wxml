@@ -1,22 +1,76 @@
-<view class="container">
+<scroll-view scroll-y class="container">
     <view class="avatar" style="background-image: url({{imageSrc}})" bindtap="showCropper"></view>
     <view class="nickname">点击添加头像</view>
-    <form hidden="{{showCropper}}">
-        <view class="input-box">
+    <form hidden="{{showCropper}}" bindsubmit="submit">
+        <view class="input-box" wx:if="{{type=='partner'?false:true}}">
             <view class="label" hover-class="none" hover-stop-propagation="false">
                 合伙人ID
             </view>
-            <input class="input" placeholder="合伙人ID" />
+            <input class="input" name="partner_id" placeholder="合伙人ID" />
         </view>
         <view class="input-box">
             <view class="label" hover-class="none" hover-stop-propagation="false">
-                合伙人ID
+                真实姓名
             </view>
-            <input class="input" placeholder="合伙人ID" />
+            <input class="input" name="username" placeholder="姓名" />
         </view>
-        <button class="submit" html-type="submit">提交申请</button>
+        <view class="input-box">
+            <view class="label" hover-class="none" hover-stop-propagation="false">
+                联系电话
+            </view>
+            <input class="input" name="tel_number" type="number" placeholder="姓名" />
+        </view>
+        <view class="input-box">
+            <view class="label" hover-class="none" hover-stop-propagation="false">
+                身份证号
+            </view>
+            <input class="input" name="id_card" type="number" placeholder="姓名" />
+        </view>
+        <view class="input-box">
+            <view class="label">地址信息</view>
+            <picker 
+                mode="multiSelector" 
+                class="input"
+                bindcolumnchange="bindRegionColumnChange" 
+                value="{{addressCheck}}" 
+                range-key="name" 
+                range="{{addressList}}"
+            >
+                <text selectable="false" space="false" decode="false">
+                {{ addressList[0][addressCheck[0]].name }} {{ addressList[1][addressCheck[1]].name }} {{ addressList[2][addressCheck[2]].name }}
+                </text>
+            </picker>
+        </view>
+        <view class="input-box">
+            <view class="label" hover-class="none" hover-stop-propagation="false">
+                详细门牌
+            </view>
+            <input class="input" name="detail_info" placeholder="姓名" />
+        </view>
+        <block wx:if="{{type=='partner'?true:false}}">
+            <view class="input-box">
+                <view class="label" hover-class="none" hover-stop-propagation="false">
+                    高校名称
+                </view>
+                <input class="input" name="universities" placeholder="姓名" />
+            </view>
+            <view class="input-box">
+                <view class="label" hover-class="none" hover-stop-propagation="false">
+                    高校地址
+                </view>
+                <input class="input" name="universities_address" placeholder="姓名" />
+            </view>
+            <!-- <view class="input-box">
+                <view class="label" hover-class="none" hover-stop-propagation="false">
+                    紧急联系方式
+                </view> 
+                <input class="input" name="detail_info" placeholder="姓名" />
+            </view> -->
+        </block>
+        
+        <button class="submit" formType="submit">提交申请</button>
     </form>
-
+    <view class="placeholder"></view>
     <my-cropper
         bind:close="hideCut"
         cutRatio="0"
@@ -25,4 +79,4 @@
         class="cropper"
         imageSrc="{{imageSrc}}"
     />
-</view>
+</scroll-view>

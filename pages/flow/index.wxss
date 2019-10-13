@@ -47,12 +47,14 @@
 
 .cart-item-total {
   padding-left: 30rpx;
+  display: flex;
 }
 
 .cart-item-total-price {
   font-size: 32rpx;
   color: #D73F3F;
   text-align: center;
+  line-height: 40rpx;
 }
 
 .cart-item-total-price em {
@@ -192,6 +194,13 @@
 .checkbox-box{
   margin: 0 24rpx;
   padding: 0;
+}
+
+.price-box{
+  display: flex;
+  height: 98rpx;
+  flex-direction: column;
+  justify-content: center;
 }
 
 /* 未选中的 背景样式 */

@@ -12,12 +12,35 @@
 
 .card{
     width:686rpx;
-    height:232rpx;
     background:rgba(255,255,255,1);
     box-shadow:0px 4rpx 16rpx 0px rgba(0,0,0,0.05);
     border-radius:4rpx;
     margin: 0 auto;
-    margin-top: 32rpx;          
+    margin-top: 32rpx;   
+    position: relative; 
+    overflow: hidden;      
+}
+
+.card-232{
+    height:232rpx;
+}
+
+.card-auto{
+    min-height:232rpx;
+    height: auto;
+}
+
+.getMore{
+    width: 100%;
+    position: absolute;
+    font-size:24rpx;
+    font-family:PingFang-SC-Medium,PingFang-SC;
+    font-weight:500;
+    color:rgba(215,63,63,1);
+    line-height:34rpx;
+    left: 0;
+    bottom: 48rpx;
+    text-align: center;
 }
 
 .content-title{
@@ -87,4 +110,21 @@
     left: 50%;
     transform: translateX(-50%);
     bottom: 88rpx;
+}
+
+.applied{
+    width:686rpx;
+    height:80rpx;
+    background:#EFB3B3;
+    border-radius:4rpx;
+    font-size:28rpx;
+    font-family:PingFang-SC;
+    font-weight:500;
+    color:rgba(255,255,255,1);
+    line-height:80rpx;
+    position: fixed;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 88rpx;
+    text-align: center;
 }

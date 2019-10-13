@@ -38,8 +38,8 @@
 }
 
 .user-header .user-header-cont .user-header-avatar image {
-  width: 120rpx;
-  height: 120rpx;
+  width: 136rpx;
+  height: 136rpx;
   border-radius: 50%;
 }
 

@@ -1,0 +1,29 @@
+<!--pages/agent/agentList.wxml-->
+<view class="container" hover-class="none" hover-stop-propagation="false">
+    <image class="avatar" src="{{avatar}}" ></image>
+    <view class="nickname">恭喜你已经是合伙人啦</view>
+    <view class="input-box">
+        <view class="label" hover-class="none" hover-stop-propagation="false">
+            合伙人ID
+        </view>
+        <view class="input">{{id}}</view>
+    </view>
+    <view class="input-box">
+        <view class="label" hover-class="none" hover-stop-propagation="false">
+            真实姓名
+        </view>
+        <view class="input">{{username}}</view>
+    </view>
+    <view class="input-box">
+        <view class="label" hover-class="none" hover-stop-propagation="false">
+            累计提成
+        </view>
+        <view class="input">奖励金：<span class="red">{{price}}</span> 积分：<span class="red">{{integral}}</span></view>
+    </view>
+    <view class="input-box">
+        <view class="label" hover-class="none" hover-stop-propagation="false">
+            下级销售
+        </view>
+        <view class="input">0人</view>
+    </view>
+</view>

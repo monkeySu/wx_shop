@@ -21,8 +21,14 @@ Page({
 
     page: 1,
 
-    showSlide: false,
+    pageData: {
+      current_page: 0,
+      page_count: 1
+    },
 
+    showSlide: false,
+    new: 0,
+    
     categorySelect: {}
   },
 
@@ -58,21 +64,46 @@ Page({
    */
   getGoodsList: function (is_super, page) {
     let _this = this;
+    let {
+      pageData: {
+        current_page,
+        page_count
+      },
+      list,
+      new
+    } = _this.data
+
+    current_page+=1
+
+    if(current_page>page_count) {
+      wx.showToast({
+        title: '没有更多咯~',
+        icon: 'none',
+        image: '',
+        duration: 1500,
+        mask: false
+      });
+
+      return false  
+    }
     App._get('/category/list', {
       page: page || 1,
-      new: _this.data.sortType,
+      new,
       price: _this.data.sortPrice ? 1: 0,
       category_id: _this.data.option.category_id || 0,
       search: _this.data.option.search || '',
     }, function (result) {
-        let resultList = result.data.list
-          , dataList = _this.data.list;
-        if (is_super === true || typeof dataList.data === 'undefined') {
-          // typeof dataList.data === 'undefined'
-          _this.setData({ list: resultList, noList: false });
-        } else {
-          _this.setData({ 'list.data': dataList.data.concat(resultList.data) });
-        }
+      console.log(result)
+      if(result.code===0){
+        
+
+        _this.setData({
+          list: current_page==1?result.data.list:list.concat(result.data.list),
+          pageData: {
+            ...result.data.page_data
+          }
+        })
+      }
     });
   },
 
@@ -147,9 +178,12 @@ Page({
       , newSortType = e.currentTarget.dataset.type
       , newSortPrice = newSortType === 'price' ? !_this.data.sortPrice : true;
 
+
+
     _this.setData({
       list: {},
       page: 1,
+      new: newSortType=="new"?1:0,
       sortType: newSortType,
       sortPrice: newSortPrice
     }, function () {
@@ -186,11 +220,30 @@ Page({
    */
   bindDownLoad: function () {
     // 已经是最后一页
-    if (this.data.page >= this.data.list.last_page) {
+    let {
+      pageData: {
+        current_page,
+        page_count
+      },
+      list
+    } = _this.data
+
+    current_page+=1
+
+    if(current_page>page_count) {
       this.setData({ no_more: true });
-      return false;
+
+      wx.showToast({
+        title: '没有更多咯~',
+        icon: 'none',
+        image: '',
+        duration: 1500,
+        mask: false
+      });
+
+      return false  
     }
-    this.getGoodsList(false, ++this.data.page);
+    this.getGoodsList(false);
   },
 
   /**

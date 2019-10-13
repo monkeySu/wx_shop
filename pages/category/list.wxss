@@ -28,6 +28,10 @@
   padding-right: 30rpx;
 }
 
+.flower-count{
+  display: inline-block;
+}
+
 .store_nav_cont #list-0 .top_jiantou {
   position: absolute;
   right: 52rpx;

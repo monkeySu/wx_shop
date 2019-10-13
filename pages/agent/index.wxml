@@ -2,27 +2,20 @@
     <image class="banner" src="https://img-mall.irishoney.com/FkmItXdFsK6icl6tyvLI3jmIaiMY.png" hover-class="none" hover-stop-propagation="false">
         
     </image>
-    <view class="card">
+    <view class="card {{item.status?'card-auto':'card-232'}}" wx:for="{{data.text}}" wx:key="{{index}}">
         <view class="content-title" hover-class="none" hover-stop-propagation="false">
             <view class="rect-box before"></view>
-                什么是销售代理
+                {{item.name}}
             <view class="rect-box after"></view>
         </view>
         <view class="content" hover-class="none" hover-stop-propagation="false">
-            
+            <rich-text class="" nodes="{{item.content}}">
+                
+            </rich-text>
         </view>
-    </view>
-    <view class="card">
-        <view class="content-title" hover-class="none" hover-stop-propagation="false">
-            <view class="rect-box before"></view>
-            什么是销售代理
-            <view class="rect-box after"></view>
-
-        </view>
-        <view class="content" hover-class="none" hover-stop-propagation="false">
-            
-        </view>
+        <div bindtap="shoeMore" data-index="{{index}}" class="getMore">{{item.status?'收起':'查看更多'}}</div>
     </view>
     
-    <button class="navigateToApply">点击成为销售代理</button>
+    <button wx:if="{{verify_status==0?true:false}}" bindtap="navigateToApply" class="navigateToApply">点击成为{{type=='partner'?'合伙人':'销售代理'}}</button>
+    <view wx:else class="applied">等待审核中</view>
 </view>

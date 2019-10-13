@@ -1,5 +1,6 @@
+// pages/agent/agentList.js
+
 const App = getApp()
-// pages/agent/user.js
 Page({
 
   /**
@@ -17,7 +18,15 @@ Page({
   },
 
   getData() {
-    App._get('/agent/info',{}, (res) => {
+    App._get('/agent/partner/info',{}, (res) => {
+      if(res.code==0){
+        this.setData({
+          ...res.data
+        })
+      }
+    }, () => {
+
+    }, () => {
 
     })
   }

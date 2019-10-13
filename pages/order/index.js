@@ -31,7 +31,7 @@ Page({
    */
   getOrderList: function (dataType) {
     let _this = this;
-    App._get('user.order/lists', { dataType }, function (result) {
+    App._get('/user/trade', { dataType }, function (result) {
       _this.setData(result.data);
       result.data.list.length && wx.pageScrollTo({
         scrollTop: 0

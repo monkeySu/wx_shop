@@ -62,26 +62,33 @@ Page({
    * 递增指定的商品数量
    */
   addCount(e) {
+    const {
+      dataset: {
+        index,
+        specId,
+        id
+      }
+    } = e.currentTarget
+
     let _this = this,
-      index = e.currentTarget.dataset.index,
-      goodsSkuId = e.currentTarget.dataset.skuId,
-      goods = _this.data.goods_list[index],
+      goods = _this.data.list[index],
       order_total_price = _this.data.order_total_price;
+
     // 后端同步更新
     wx.showLoading({
       title: '加载中',
       mask: true
     })
-    App._post_form('cart/add', {
-      goods_id: goods.goods_id,
-      goods_num: 1,
-      goods_sku_id: goodsSkuId
+    App._post_form('/user/cart/change', {
+      id,
+      original_spec_id: specId,
+      num: goods.num++
     }, () => {
-      goods.total_num++;
-      _this.setData({
-        ['goods_list[' + index + ']']: goods,
-        order_total_price: _this.mathadd(order_total_price, goods.goods_price)
-      });
+      // goods.total_num++;
+      // _this.setData({
+      //   ['list[' + index + ']']: goods,
+      //   order_total_price: _this.mathadd(order_total_price, goods.goods_price)
+      // });
     });
   },
 
@@ -89,9 +96,15 @@ Page({
    * 递减指定的商品数量
    */
   minusCount(e) {
+
+    const {
+      dataset: {
+        index,
+        specId,
+        id
+      }
+    } = e.currentTarget
     let _this = this,
-      index = e.currentTarget.dataset.index,
-      goodsSkuId = e.currentTarget.dataset.skuId,
       goods = _this.data.goods_list[index],
       order_total_price = _this.data.order_total_price;
 
@@ -101,7 +114,7 @@ Page({
         title: '加载中',
         mask: true
       })
-      App._post_form('cart/sub', {
+      App._post_form('/user/cart/change', {
         goods_id: goods.goods_id,
         goods_sku_id: goodsSkuId
       }, () => {

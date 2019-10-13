@@ -19,7 +19,8 @@ App({
    */
   globalData: {
     user_id: null,
-    address: {}
+    address: {},
+    applicationUser: {}
   },
 
   api_root: 'https://mall.irishoney.com/api', // api地址

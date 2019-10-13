@@ -23,7 +23,11 @@
     "pages/vip/index",
     "pages/password/list",
     "pages/password/creat",
-    "pages/password/forget"
+    "pages/password/forget",
+    "pages/agent/agentList",
+    "pages/agent/subordinate",
+    "pages/agent/applicantsList",
+    "pages/agent/agent_user"
   ],
   "window": {
     "navigationBarBackgroundColor": "#ffffff",
