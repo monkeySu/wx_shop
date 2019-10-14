@@ -3,12 +3,12 @@
     scroll-top="0" scroll-left="0" scroll-into-view="" scroll-with-animation="false" enable-back-to-top="false" 
     bindscrolltoupper="" bindscrolltolower="" bindscroll="">
     
-    <image class="user-avatar" src="" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload="">
+    <image class="user-avatar" src="{{avatar.url}}" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload="">
     </image>
     <view class="wealth-box" hover-class="none" hover-stop-propagation="false">
         <view class="wealth-item" hover-class="none" hover-stop-propagation="false">
             <view class="item-count" hover-class="none" hover-stop-propagation="false">
-                8824
+                {{price}}
             </view>
             <view class="item-name" hover-class="none" hover-stop-propagation="false">
                 奖励金
@@ -16,10 +16,10 @@
         </view>
         <view class="wealth-item" hover-class="none" hover-stop-propagation="false">
             <view class="item-count" hover-class="none" hover-stop-propagation="false">
-                8824
+                {{integral}}
             </view>
             <view class="item-name" hover-class="none" hover-stop-propagation="false">
-                奖励金
+                积分
             </view>
         </view>
     </view>
@@ -28,7 +28,70 @@
             排行
         </view>
         <view class="msg-count" hover-class="none" hover-stop-propagation="false">
-            23
+            {{rank}}
+        </view>
+    </view>
+
+    <view class="msg-box" hover-class="none" hover-stop-propagation="false">
+        <view class="msg-title" hover-class="none" hover-stop-propagation="false">
+            成交单数
+        </view>
+        <view class="msg-count" hover-class="none" hover-stop-propagation="false">
+            20
+        </view>
+    </view>
+
+    <view class="msg-box" hover-class="none" hover-stop-propagation="false">
+        <view class="msg-title" hover-class="none" hover-stop-propagation="false">
+            会员等级
+        </view>
+        <view class="msg-count" hover-class="none" hover-stop-propagation="false">
+            {{vip.name}}
+        </view>
+    </view>
+
+    <view class="msg-box" hover-class="none" hover-stop-propagation="false">
+        <view class="msg-title" hover-class="none" hover-stop-propagation="false">
+            加入时间
+        </view>
+        <view class="msg-count" hover-class="none" hover-stop-propagation="false">
+            {{join_date}}
+        </view>
+    </view>
+
+    <view class="msg-box" hover-class="none" hover-stop-propagation="false">
+        <view class="msg-title" hover-class="none" hover-stop-propagation="false">
+            真实姓名
+        </view>
+        <view class="msg-count" hover-class="none" hover-stop-propagation="false">
+            {{username}}
+        </view>
+    </view>
+
+    <view class="msg-box" hover-class="none" hover-stop-propagation="false">
+        <view class="msg-title" hover-class="none" hover-stop-propagation="false">
+            联系电话
+        </view>
+        <view class="msg-count" hover-class="none" hover-stop-propagation="false">
+            {{tel_number}}
+        </view>
+    </view>
+
+    <view class="msg-box" hover-class="none" hover-stop-propagation="false">
+        <view class="msg-title" hover-class="none" hover-stop-propagation="false">
+            身份证
+        </view>
+        <view class="msg-count" hover-class="none" hover-stop-propagation="false">
+            {{id_card}}
+        </view>
+    </view>
+
+    <view class="msg-box" hover-class="none" hover-stop-propagation="false">
+        <view class="msg-title" hover-class="none" hover-stop-propagation="false">
+            常住地址
+        </view>
+        <view class="msg-count" hover-class="none" hover-stop-propagation="false">
+            {{detail_info}}
         </view>
     </view>
 

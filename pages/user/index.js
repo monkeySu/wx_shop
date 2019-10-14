@@ -28,7 +28,7 @@ Page({
     });
     if (_this.data.isLogin) {
       // 获取当前用户信息
-      // _this.getUserDetail();
+      _this.getUserDetail();
     }
   },
 
@@ -37,7 +37,7 @@ Page({
    */
   getUserDetail() {
     let _this = this;
-    App._get('user.index/detail', {}, result => {
+    App._get('/user', {}, result => {
       _this.setData(result.data);
     });
   },

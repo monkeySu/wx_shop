@@ -12,7 +12,11 @@ Page({
     imgkey: '/FiugSF8_Hj96xXc_YPgLpRqlaKcu.pngs',
 
     addressList: [[],[],[]],
-    addressCheck: [0,0,0]
+    addressCheck: [0,0,0],
+
+    formData: {
+
+    }
   },
 
   /**
@@ -20,13 +24,29 @@ Page({
    */
   onLoad: function (options) {
     this.setData({
-      ...options
+      ...options,
+      isNew: options.isNew?true:false
     })
-    this.getRegion(0, 0, (res) => {
-      this.getRegion(res.list[0].id, 1, (result) => {
-        this.getRegion(result.list[0].id, 2)
+    const isNew = options.isNew || false
+    if(isNew){
+      this.getRegion(0, 0, (res) => {
+        this.getRegion(res.list[0].id, 1, (result) => {
+          this.getRegion(result.list[0].id, 2)
+        })
       })
-    })
+    }else{
+      const formData = app.globalData.formData
+      this.setData({
+        formData
+      })
+
+      this.getRegion(0, 0, (res) => {
+        this.getRegion(res.list[0].id, 1, (result) => {
+          this.getRegion(result.list[0].id, 2)
+        })
+      })
+    }
+    
   },
 
   hideCut(e) {
@@ -158,6 +178,10 @@ Page({
       county_id: addressList[2][addressCheck[2]].id,
     }
 
+    // if(id>0){
+    //   this.creat()
+    // }
+
     if(type == "partner"){
       App._post_form('/agent/partner/submit', { ...data },  (result) => {
         wx.navigateBack({
@@ -179,6 +203,30 @@ Page({
         wx.hideLoading();
       })
     }
-  }
+  },
+
+  creat(data) {
+    if(type == "partner"){
+      App._post_form('/agent/partner/submit', { ...data },  (result) => {
+        wx.navigateBack({
+          delta: 1
+        });
+      }, () => {
+
+      }, () => {
+        wx.hideLoading();
+      })
+    }else if(type=="agent"){
+      App._post_form('/agent/submit', { ...data },  (result) => {
+        wx.navigateBack({
+          delta: 1
+        });
+      }, () => {
+
+      }, () => {
+        wx.hideLoading();
+      })
+    }
+  },
 
 })

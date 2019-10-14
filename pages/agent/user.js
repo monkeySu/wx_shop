@@ -18,7 +18,9 @@ Page({
 
   getData() {
     App._get('/agent/info',{}, (res) => {
-
+      this.setData({
+        ...res.data
+      })
     })
   }
 

@@ -27,13 +27,13 @@
     <view class="wealth-box">
       <view class="wealth-item item-1">
         <view class="wealth-count">
-          889
+          {{integral.total}}
         </view>
         <view class="wealth-name">我的鸢尾花</view>
       </view>
       <view class="wealth-item item-2">
         <view class="wealth-count">
-          889
+          {{integral.surplus}}
         </view>
         <view class="wealth-name">蜜糖值</view>
       </view>
@@ -172,7 +172,8 @@
           </form>
         </view>
         <view class="order-navbar-item flex-box">
-          <form bindsubmit="onTargetMenus" data-url="pages/agent/index?type=partner" report-submit="true">
+          <!-- <view wx:if="{{agent.is==1?false:true}}" class="order-navbar-item flex-box"> -->
+          <form bindsubmit="onTargetMenus" data-url="{{agent.is_partner==0?'pages/agent/index?type=partner':'pages/agent/agentList'}}" report-submit="true">
             <button formType="submit" class="btn-normal">
               <image class="icon" src="https://img-mall.irishoney.com/FtDU748aduOk8MXfaLMtXPaf6ja1.png"></image>
               <text class="order-navbar__name">成为合伙人</text>
@@ -181,7 +182,8 @@
           </form>
         </view>
         <view class="order-navbar-item flex-box">
-          <form bindsubmit="onTargetMenus" data-url="pages/agent/index?type=agent" report-submit="true">
+          <!-- <view wx:if="{{agent.is_partner==1?false:true}}" class="order-navbar-item flex-box"> -->
+          <form bindsubmit="onTargetMenus" data-url="{{agent.is==0?'pages/agent/index?type=agent':'pages/agent/user'}}" report-submit="true">
             <button formType="submit" class="btn-normal">
               <image class="icon" src="https://img-mall.irishoney.com/FlualhAAxykj4tBozMcIxWY9UKr7.png"></image>
               <text class="order-navbar__name">成为销售代理</text>
@@ -200,7 +202,7 @@
           </form>
         </view>
         <view class="order-navbar-item flex-box">
-          <form bindsubmit="onTargetOrder" data-type="payment" report-submit="true">
+          <form bindsubmit="onTargetMenus" data-url="pages/address/index" report-submit="true">
             <button formType="submit" class="btn-normal">
               <image class="icon" src="https://img-mall.irishoney.com/FttN2dQOgk12xEOR7dCuwjraalMk.png"></image>
               <text class="order-navbar__name">收货地址</text>

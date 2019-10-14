@@ -8,6 +8,12 @@ Page({
   data: {
     dataType: 'all',
     list: [],
+    
+    goodsStatus: [
+      '未支付',
+      '已支付',
+      '支付失败'
+    ]
   },
 
   /**
@@ -31,7 +37,7 @@ Page({
    */
   getOrderList: function (dataType) {
     let _this = this;
-    App._get('/user/trade', { dataType }, function (result) {
+    App._get('/user/trade/index', { dataType }, function (result) {
       _this.setData(result.data);
       result.data.list.length && wx.pageScrollTo({
         scrollTop: 0
@@ -91,29 +97,31 @@ Page({
    */
   payOrder: function (e) {
     let _this = this;
-    let order_id = e.currentTarget.dataset.id;
+    let trade_id = e.currentTarget.dataset.id;
 
     // 显示loading
     wx.showLoading({ title: '正在处理...', });
-    App._post_form('user.order/pay', { order_id }, function (result) {
+    App._post_form('/goods/trade/pay', { trade_id }, function (result) {
       if (result.code === -10) {
         App.showError(result.msg);
         return false;
       }
       // 发起微信支付
       wx.requestPayment({
-        timeStamp: result.data.timeStamp,
-        nonceStr: result.data.nonceStr,
-        package: 'prepay_id=' + result.data.prepay_id,
+        timeStamp: ''+result.data.time_stamp,
+        nonceStr: result.data.nonce_str,
+        package: result.data.package,
         signType: 'MD5',
-        paySign: result.data.paySign,
+        paySign: result.data.pay_sign,
         success: function (res) {
+          this.getOrderList(this.data.dataType);
           // 跳转到已付款订单
-          wx.navigateTo({
-            url: '../order/detail?order_id=' + order_id
-          });
+          // wx.navigateTo({
+          //   url: '../order/detail?order_id=' + order_id
+          // });
         },
         fail: function () {
+          this.getOrderList(this.data.dataType);
           App.showError('订单未支付');
         },
       });

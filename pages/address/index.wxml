@@ -6,7 +6,7 @@
   <custom-ul class="addres-list" wx:if="{{list.length}}">
     <custom-li bindtap="selectAddress" data-item="{{item}}" wx:for="{{list}}" wx:for-item="item" wx:key="this">
       <view class="address-header b-f m-top18">
-        <view bindtap="editAddress"  data-item="{{item}}" class="address-header-icon" hover-class="none" hover-stop-propagation="false">
+        <view catchtap="editAddress"  data-item="{{item}}" class="address-header-icon" hover-class="none" hover-stop-propagation="false">
           
         </view>
         <view class="flow-header-left pl-12">

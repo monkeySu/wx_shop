@@ -118,13 +118,15 @@
 }
 
 .btn-main {
-  border-radius: 4px;
-  border: 1rpx solid #fd4a5f;
-  padding: 6rpx 20rpx;
-  font-size: 28rpx;
-  color: #fd4a5f;
-  margin-left: 10rpx;
-  float: right;
+  /* border-radius: 4px; */
+  /* border: 1rpx solid #fd4a5f; */
+  /* padding: 6rpx 20rpx; */
+  /* font-size: 28rpx; */
+  /* color: #fd4a5f; */
+  color: #fff;
+  background:rgba(215,63,63,1);
+  /* margin-left: 10rpx; */
+  /* float: right; */
 }
 
 .user-orderJtou {
@@ -151,4 +153,107 @@
   width: 100%;
   margin-top: -46rpx;
   line-height: 1.6;
+}
+
+.goods-item{
+  margin: 25rpx auto;
+}
+
+.price-box{
+  display: flex;
+}
+
+.content{
+  width: 500rpx;
+  height: 160rpx;
+  display: flex;
+  flex-direction: column;
+  margin-left: 16rpx;
+  position: relative;
+  justify-content: space-between;
+}
+
+
+.content-text{
+  display: flex;
+  flex-direction: column;
+  margin-left: 16rpx;
+}
+
+.name{
+  width:396rpx;
+  font-size:28rpx;
+  font-family:PingFang-SC-Medium,PingFang-SC;
+  font-weight:500;
+  color:rgba(51,51,51,1);
+  line-height:40rpx;
+}
+
+.desc{
+  width:396rpx;
+  font-size:24rpx;
+  font-family:PingFang-SC-Medium,PingFang-SC;
+  font-weight:500;
+  color:rgba(153,153,153,1);
+  line-height:34rpx;
+  margin-top: 4rpx;
+}
+
+.count{
+  position: absolute;
+  font-size:24rpx;
+  font-family:PingFang-SC-Medium,PingFang-SC;
+  font-weight:500;
+  color:rgba(153,153,153,1);
+  line-height:34rpx;
+  top: 0;
+  right: 0
+}
+
+.prize-box{
+  width: 100%;
+  font-size:24rpx;
+  font-family:PingFang-SC-Medium,PingFang-SC;
+  font-weight:500;
+  color:rgba(220,167,114,1);
+  line-height:34rpx;
+  display: flex;
+}
+
+.flower-count{
+  font-size:28rpx;
+  font-family:PingFang-SC-Medium,PingFang-SC;
+  font-weight:500;
+  color:rgba(220,167,114,1);
+  line-height:34rpx;
+  height: 34rpx;
+  position: relative;
+  display: inline-block;
+  text-indent: 24rpx;
+}
+
+.flower-count:after{
+  content: "";
+  background: url(https://img-mall.irishoney.com/Flkynoy8xQIvBYbYUPg9Gz081r-M.png) no-repeat center/100%;
+  width: 28rpx;
+  height: 28rpx;
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.btn{
+  width: 128rpx;
+  height:64rpx;
+  border-radius:4rpx;
+  font-size:24rpx;
+  text-align: center;
+  line-height: 64rpx;
+  float: right;
+}
+
+.pay-btn{
+  background:rgba(215,63,63,1);
+  color: #fff;
 }

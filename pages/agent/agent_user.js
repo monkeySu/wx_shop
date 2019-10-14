@@ -6,6 +6,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    type: '',
     modalData: {
       title: '提示',
       type: 'default',
@@ -27,6 +28,7 @@ Page({
 
   refuse(){
     this.setData({
+      type: 'refuse',
       modalData: {
         title: '提示',
         desc: '拒绝后不在收到该用户的申请',
@@ -38,6 +40,7 @@ Page({
 
   agree(){
     this.setData({
+      type: 'agree',
       modalData: {
         title: '提示',
         desc: '通过后马上成为您的下级销售',
@@ -45,6 +48,23 @@ Page({
         okText:'通过'
       },
       showModal: true
+    })
+  },
+
+  modalConfirm(){
+    const {
+      data: {id},
+      type
+    } = this.data
+    App._post_form('/agent/partner/audit', {
+      id,
+      status: type=="agree"?1:0
+    }, () => {
+      this.setData({
+        showModal: false
+      }, () => {
+        wx.navigateBack()
+      })
     })
     
   }
