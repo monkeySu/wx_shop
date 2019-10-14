@@ -27,7 +27,7 @@ Page({
     },
 
     showSlide: false,
-    new: 0,
+    isnew: 0,
     
     categorySelect: {}
   },
@@ -70,7 +70,7 @@ Page({
         page_count
       },
       list,
-      new
+      isnew
     } = _this.data
 
     current_page+=1
@@ -88,7 +88,7 @@ Page({
     }
     App._get('/category/list', {
       page: page || 1,
-      new,
+      isnew,
       price: _this.data.sortPrice ? 1: 0,
       category_id: _this.data.option.category_id || 0,
       search: _this.data.option.search || '',
@@ -183,7 +183,7 @@ Page({
     _this.setData({
       list: {},
       page: 1,
-      new: newSortType=="new"?1:0,
+      isnew: newSortType=="new"?1:0,
       sortType: newSortType,
       sortPrice: newSortPrice
     }, function () {
