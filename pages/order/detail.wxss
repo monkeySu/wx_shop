@@ -138,3 +138,31 @@
 .chackout-left-detail {
   line-height: 44px;
 }
+
+.status-box{
+  width: 100vw;
+  height: 244rpx;
+  background: linear-gradient(#FFC58A, #BC6D1F);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.status-text{
+  font-size:32rpx;
+  font-family:PingFangSC-Medium,PingFangSC;
+  font-weight:500;
+  color:rgba(255,255,255,1);
+  line-height:44rpx;
+  padding-top: 38rpx;
+}
+
+.status-desc{
+  font-size:24rpx;
+  font-family:PingFang-SC-Medium,PingFang-SC;
+  font-weight:500;
+  color:rgba(255,255,255,1);
+  line-height:34rpx;
+  margin-top: 8rpx;
+}

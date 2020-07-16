@@ -14,16 +14,19 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.data.order_id = options.order_id;
+    this.setData({
+      order_id: options.order_id
+    })
+    // this.data.order_id = options.order_id;
     this.getOrderDetail(options.order_id);
   },
 
   /**
    * 获取订单详情
    */
-  getOrderDetail: function (order_id) {
+  getOrderDetail: function (id) {
     let _this = this;
-    App._get('user.order/detail', { order_id }, function (result) {
+    App._get('/user/trade/info?', { id }, function (result) {
       _this.setData(result.data);
     });
   },

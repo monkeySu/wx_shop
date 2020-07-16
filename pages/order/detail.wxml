@@ -1,15 +1,19 @@
-<view class="container p-bottom" wx:if="{{order.order_id}}">
+<view class="container p-bottom" wx:if="{{order_id}}">
   <scroll-view scroll-y="true">
 
+    <view class="status-box">
+      <view class="status-text">等待买家付款</view>
+      <view class="status-desc">剩下 23小时19分钟23秒 自动关闭</view>
+    </view>
     <!-- 收货地址 -->
     <view class="b-f">
       <view class="flow-checkout-header b-f dis-flex">
         <view class="flow-header-left padding-box">
-          <view class="flow-checkout-admin f-26 col-3">{{order.address.name}}
-            <text class="f-26 col-m">{{order.address.phone}}</text>
+          <view class="flow-checkout-admin f-26 col-3">{{address.username}}
+            <text class="f-26 col-m">{{address.tel_number}}</text>
           </view>
           <view class="flow-checkout-address">
-            {{order.address.region.province}} {{order.address.region.city}} {{order.address.region.region}} {{order.address.detail}}
+            {{address.province}} {{address.city}} {{address.county}} {{address.detail_info}}
           </view>
         </view>
       </view>

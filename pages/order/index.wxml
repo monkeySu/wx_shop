@@ -34,7 +34,7 @@
                   </view>
                   <view class="order-box order-img_list">
                     <view class="order-shop">
-                      <view bindtap="detail" class="order-list-box dis-flex" data-id="{{item.order_id}}">
+                      <view bindtap="detail" class="order-list-box dis-flex" data-id="{{item.id}}">
                         <view class="left">
                           <view class="dis-flex goods-item" wx:for-item="s_item" wx:for="{{item.delivery_list[0].spec_list}}" wx:key="{{item.id}}">
                             <view class="order-shop-left">
@@ -75,9 +75,6 @@
                         </view>
                         
                       </view>
-                      <!-- <view class="dis-flex">
-                          <button class="btn pay-btn">去支付</button>
-                      </view> -->
                       <view class="order-right">
                         <view class="dis-flex">
                           <view class="flex-box btn pay-btn" wx:if="{{item.pay_status.value==10}}">

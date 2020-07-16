@@ -1,0 +1,9 @@
+<!--pages/index/com/upload.wxml-->
+<view class="upload-box">
+    <view class="item-box view-box item-3" wx:for="{{imageList}}" wx:key="{{index}}">
+        <image class="view-image" src="{{item}}"></image>
+        <view class="view-delete" catchtap="deleteImage" data-index="{{index}}"></view>
+    </view>
+
+    <view bindtap="uploadImage" wx:if="{{imageList.length<count}}" class="item-plus item-box"></view>
+</view>
